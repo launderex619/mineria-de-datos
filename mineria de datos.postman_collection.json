@@ -110,6 +110,328 @@
 				}
 			],
 			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Archivo",
+			"item": [
+				{
+					"name": "Obtener archivo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/archivo/version",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"archivo",
+								"version"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Subir archivo",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/archivo/version",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"archivo",
+								"version"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Datos",
+			"item": [
+				{
+					"name": "Agregar dato",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/datos/version",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"datos",
+								"version"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Agregar atributo",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/datos/version/atributo",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"datos",
+								"version",
+								"atributo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener datos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/datos/version",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"datos",
+								"version"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modificar dato",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:3000/datos/version",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"datos",
+								"version"
+							],
+							"query": [
+								{
+									"key": "s",
+									"value": "s",
+									"disabled": true
+								},
+								{
+									"key": "d",
+									"value": "s",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar dato",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:3000/datos/version/id",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"datos",
+								"version",
+								"id"
+							],
+							"query": [
+								{
+									"key": "s",
+									"value": "s",
+									"disabled": true
+								},
+								{
+									"key": "d",
+									"value": "s",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar atributo",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:3000/datos/version/atributo/nombre",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"datos",
+								"version",
+								"atributo",
+								"nombre"
+							],
+							"query": [
+								{
+									"key": "s",
+									"value": "s",
+									"disabled": true
+								},
+								{
+									"key": "d",
+									"value": "s",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Base de datos",
+			"item": [
+				{
+					"name": "Obtener Bases de datos disponibles",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/base-de-datos",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"base-de-datos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener tablas de la base de datos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/base-de-datos/nombre/tablas",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"base-de-datos",
+								"nombre",
+								"tablas"
+							],
+							"query": [
+								{
+									"key": "nombre/tablas",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener atributos de la tabla",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/base-de-datos/nombre/tablas/nombre-tabla",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"base-de-datos",
+								"nombre",
+								"tablas",
+								"nombre-tabla"
+							],
+							"query": [
+								{
+									"key": "nombre/tablas",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener datos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/base-de-datos/nombre/tabla",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"base-de-datos",
+								"nombre",
+								"tabla"
+							],
+							"query": [
+								{
+									"key": "nombre/tablas",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
 		}
 	],
 	"protocolProfileBehavior": {}
