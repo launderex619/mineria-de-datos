@@ -1,0 +1,116 @@
+{
+	"info": {
+		"_postman_id": "58944a1a-7720-4791-8c5a-e505a037828c",
+		"name": "mineria de datos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Versiones",
+			"item": [
+				{
+					"name": "Obtener lista de las versiones",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/versiones",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"versiones"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener ultima version",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/versiones/ultima",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"versiones",
+								"ultima"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener version actual",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/versiones/actual",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"versiones",
+								"actual"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Configuracion",
+			"item": [
+				{
+					"name": "Obtener configuracion",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/configuracion/nombre_configuracion",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"configuracion",
+								"nombre_configuracion"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modificar archivo de configuracion",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/configuracion/nombre_configuracion",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"configuracion",
+								"nombre_configuracion"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
