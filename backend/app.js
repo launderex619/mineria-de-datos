@@ -3,6 +3,9 @@ const morgan = require('morgan');
 
 const versionRutas = require('./rutas/version');
 const configuracionRutas = require('./rutas/configuracion');
+const archivoRutas = require('./rutas/archivo');
+const datoRutas = require('./rutas/dato');
+const baseDeDatos = require('./rutas/base-de-datos');
 
 const app = express();
 
@@ -23,5 +26,8 @@ app.use((req, res, next) => {
 
 app.use('/versiones', versionRutas);
 app.use('/configuracion', configuracionRutas);
+app.use('/archivo', archivoRutas);
+app.use('/datos', datoRutas);
+app.use('/base-de-datos', baseDeDatos);
 
 module.exports = app;
