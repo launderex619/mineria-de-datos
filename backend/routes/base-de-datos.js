@@ -1,5 +1,5 @@
 const express = require('express');
-const baseDeDatos = require('../controladores/base-de-datosControlador');
+const baseDeDatos = require('../controllers/base-de-datosControlador');
 
 const router = express.Router();
 

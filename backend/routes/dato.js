@@ -1,5 +1,5 @@
 const express = require('express');
-const datoControlador = require('../controladores/datoControlador');
+const datoControlador = require('../controllers/datoControlador');
 
 const router = express.Router();
 

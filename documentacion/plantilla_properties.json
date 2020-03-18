@@ -1,6 +1,7 @@
 {
     "descripcion": "Archivo properties",
     "version": "01_plantilla.json",
+    "mongo": true,
     "nombre_base_de_datos": "videojuegos",
     "tablas_base_de_datos": ["ventas_globales", "ventas_xbox", "ventas_playstation"],
     "atributos_base_de_datos": {

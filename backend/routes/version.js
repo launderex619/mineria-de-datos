@@ -1,5 +1,5 @@
 const express = require('express');
-const versionControlador = require('../controladores/versionControlador');
+const versionControlador = require('../controllers/versionControlador');
 
 const router = express.Router();
 
