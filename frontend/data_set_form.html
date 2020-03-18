@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instancia</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+</head>
+<body>
+    <div class="container pt-3">
+        <div class="col-8 offset-2 pt-3 bg-dark mb-2">
+            <h1 class="offset-3">Descripcion Data Set</h1>
+            <div class="row offset-2">
+                <div class="col-8 mb-3">
+                    <textarea name="data_set" id="" cols="30" rows="4" class="form-control"></textarea>
+                </div>
+                <div class="col-4">
+                    <input type="button" class="btn btn-warning" value="Editar">
+                </div>
+            </div>
+        </div>
+        <div class="col-8 offset-2 pt-3 bg-dark">
+            <h1 class="offset-4 mb-2">Crear Instancia</h1>
+            <form method="POST">
+                <div class="row mb-3 text-white">
+                    <div class="col">
+                        <label for="name">Nombre</label>
+                        <input class="form-control" type="text" placeholder="Nombre del videojuego">
+                    </div>
+                    <div class="col">
+                        <label for="platform">Plataforma</label>
+                        <input class="form-control" type="text" placeholder="Plataforma">
+                    </div>
+                </div>
+                <div class="row mb-3 text-white">
+                    <div class="col">
+                        <label for="year">Año</label>
+                        <input class="form-control" type="number" placeholder="Año de lanzamiento">
+                    </div>
+                    <div class="col">
+                        <label for="genre">Genero</label>
+                        <input class="form-control" type="text" placeholder="Genero de videojuego">
+                    </div>
+                    <div class="col">
+                        <label for="publisher">Editor</label>
+                        <input class="form-control" type="text" placeholder="Editor del videojuego">
+                    </div>
+                </div>
+                <div class="row mb-5 text-white">
+                    <div class="col">
+                        <label for="na_sales">Ventas NA</label>
+                        <input class="form-control" type="number" placeholder="Norte America">
+                    </div>
+                    <div class="col">
+                        <label for="eu_sales">Ventas EU</label>
+                        <input class="form-control" type="number" placeholder="Europa">
+                    </div>
+                    <div class="col">
+                        <label for="jp_sales">Ventas JP</label>
+                        <input class="form-control" type="number" placeholder="Japon">
+                    </div>
+                    <div class="col">
+                        <label for="other_sales">Otras Ventas</label>
+                        <input class="form-control" type="number" placeholder="Otros lugares">
+                    </div>
+                    <div class="col">
+                        <label for="global_sales">Ventas Globales</label>
+                        <input class="form-control" type="number" placeholder="Globales">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-10">
+                        <input type="button" class="btn btn-primary mb-3" value="Agregar Instancia">
+                    </div>
+                    <div class="col-2">
+                        <a href="index.html" class="btn btn-primary">Regresar</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+        
+    </div>
+</body>
+</html>
