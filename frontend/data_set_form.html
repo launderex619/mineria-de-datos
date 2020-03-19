@@ -1,16 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Instancia</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
 </head>
 <body>
-    <div class="container pt-3">
+    <div class="container pt-5">
+        <div class="mb-2 offset-1">
+            <a href="index.html" class="btn btn-info" role="button">Inicio</a>
+            <a href="#" class="btn btn-info" role="button">Cargar nuevo set</a>
+            <a href="#" class="btn btn-info" role="button">Regresar a version anterior</a>
+            <a href="#" class="btn btn-info" role="button">Guardar como</a>
+            <a href="data_set_form.html" class="btn btn-info" role="button">Editar Data Set</a>
+            <a href="resumen_estadistico.html" class="btn btn-info" role="button">Resumen estadistico</a>
+        </div>
         <div class="col-8 offset-2 pt-3 bg-dark mb-2">
-            <h1 class="offset-3">Descripcion Data Set</h1>
+            <h1 class="offset-3 text-white-50">Descripcion Data Set</h1>
             <div class="row offset-2">
                 <div class="col-8 mb-3">
                     <textarea name="data_set" id="" cols="30" rows="4" class="form-control"></textarea>
@@ -20,8 +27,8 @@
                 </div>
             </div>
         </div>
-        <div class="col-8 offset-2 pt-3 bg-dark">
-            <h1 class="offset-4 mb-2">Crear Instancia</h1>
+        <div class="col-8 offset-2 pt-3 bg-dark mb-2">
+            <h1 class="offset-4 mb-2 text-white-50">Crear Instancia</h1>
             <form method="POST">
                 <div class="row mb-3 text-white">
                     <div class="col">
@@ -79,7 +86,44 @@
                 </div>
             </form>
         </div>
-        
+        <div class="col-8 offset-2 pt-3 bg-dark">
+            <h1 class="offset-4 mb-2 text-white-50">Crear Atributo</h1>
+            <form method="POST">
+                <div class="row mb-3 text-white">
+                    <div class="col">
+                        <label for="name">Nombre</label>
+                        <input class="form-control" type="text" placeholder="Nombre del atributo">
+                    </div>
+                    <div class="col">
+                        <label for="platform">Tipo de dato</label>
+                        <input class="form-control" type="text" placeholder="Dato">
+                    </div>
+                </div>
+                <div class="row mb-3 text-white">
+                    <div class="col">
+                        <label for="year">Expresion Regular</label>
+                        <input class="form-control" type="number" placeholder="Expresion regular">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-10">
+                        <input type="button" class="btn btn-primary mb-3" value="Agregar Atributo">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-8 offset-2 pt-3 bg-dark">
+            <div class="btn-group dropright">
+                <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Dropright
+                </button>
+                <div class="dropdown-menu">
+                  <p>Dato</p>
+                </div>
+              </div>
+            <h1 class="offset-3 mb-2 text-white-50">Editar/Eliminar Atributo</h1>
+            
+        </div>
     </div>
 </body>
 </html>
