@@ -1,11 +1,10 @@
 const express = require('express');
-const configuracionControlador = require('../controllers/configuracionControlador');
+const configurationController = require('../controllers/configurationController');
 
 const router = express.Router();
 
-router
-  .route('/:version')
-  .get(configuracionControlador.obtenerConfiguracion)
-  .patch(configuracionControlador.modificarConfiguracion);
+router.route('/:version').get(configurationController.getConfiguration);
+
+router.route('/').post(configurationController.createConfiguration);
 
 module.exports = router;

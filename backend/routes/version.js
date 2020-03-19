@@ -1,10 +1,10 @@
 const express = require('express');
-const versionControlador = require('../controllers/versionControlador');
+const versionController = require('../controllers/versionController');
 
 const router = express.Router();
 
-router.route('/').get(versionControlador.obtenerVersiones);
-router.route('/ultima').get(versionControlador.obtenerUltima);
-router.route('/actual').get(versionControlador.obtenerActual);
+router.route('/').get(versionController.getVersions);
+router.route('/ultima').get(versionController.getLast);
+router.route('/actual').get(versionController.getActual);
 
 module.exports = router;
