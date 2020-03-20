@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Instancia</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    
 </head>
 <body>
     <div class="container pt-5">
+        <!-- Menu -->
         <div class="mb-2 offset-1">
             <a href="index.html" class="btn btn-info" role="button">Inicio</a>
             <a href="#" class="btn btn-info" role="button">Cargar nuevo set</a>
@@ -33,55 +35,52 @@
                 <div class="row mb-3 text-white">
                     <div class="col">
                         <label for="name">Nombre</label>
-                        <input class="form-control" type="text" placeholder="Nombre del videojuego">
+                        <input class="form-control" type="text" placeholder="Nombre del videojuego" required>
                     </div>
                     <div class="col">
                         <label for="platform">Plataforma</label>
-                        <input class="form-control" type="text" placeholder="Plataforma">
+                        <input class="form-control" type="text" placeholder="Plataforma" required>
                     </div>
                 </div>
                 <div class="row mb-3 text-white">
                     <div class="col">
                         <label for="year">Año</label>
-                        <input class="form-control" type="number" placeholder="Año de lanzamiento">
+                        <input class="form-control" type="number" placeholder="Año de lanzamiento" required required>
                     </div>
                     <div class="col">
                         <label for="genre">Genero</label>
-                        <input class="form-control" type="text" placeholder="Genero de videojuego">
+                        <input class="form-control" type="text" placeholder="Genero de videojuego" required required>
                     </div>
                     <div class="col">
                         <label for="publisher">Editor</label>
-                        <input class="form-control" type="text" placeholder="Editor del videojuego">
+                        <input class="form-control" type="text" placeholder="Editor del videojuego" required required>
                     </div>
                 </div>
                 <div class="row mb-5 text-white">
                     <div class="col">
                         <label for="na_sales">Ventas NA</label>
-                        <input class="form-control" type="number" placeholder="Norte America">
+                        <input class="form-control" type="number" placeholder="Norte America" required required>
                     </div>
                     <div class="col">
                         <label for="eu_sales">Ventas EU</label>
-                        <input class="form-control" type="number" placeholder="Europa">
+                        <input class="form-control" type="number" placeholder="Europa" required required>
                     </div>
                     <div class="col">
                         <label for="jp_sales">Ventas JP</label>
-                        <input class="form-control" type="number" placeholder="Japon">
+                        <input class="form-control" type="number" placeholder="Japon" required required>
                     </div>
                     <div class="col">
                         <label for="other_sales">Otras Ventas</label>
-                        <input class="form-control" type="number" placeholder="Otros lugares">
+                        <input class="form-control" type="number" placeholder="Otros lugares" required required>
                     </div>
                     <div class="col">
                         <label for="global_sales">Ventas Globales</label>
-                        <input class="form-control" type="number" placeholder="Globales">
+                        <input class="form-control" type="number" placeholder="Globales" required required>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-10">
                         <input type="button" class="btn btn-primary mb-3" value="Agregar Instancia">
-                    </div>
-                    <div class="col-2">
-                        <a href="index.html" class="btn btn-primary">Regresar</a>
                     </div>
                 </div>
             </form>
@@ -92,38 +91,31 @@
                 <div class="row mb-3 text-white">
                     <div class="col">
                         <label for="name">Nombre</label>
-                        <input class="form-control" type="text" placeholder="Nombre del atributo">
+                        <input class="form-control" type="text" placeholder="Nombre del atributo" required>
                     </div>
                     <div class="col">
-                        <label for="platform">Tipo de dato</label>
-                        <input class="form-control" type="text" placeholder="Dato">
+                        <label for="tipo_dato">Tipo de dato</label>
+                        <input class="form-control" type="text" placeholder="Dato" required>
                     </div>
                 </div>
                 <div class="row mb-3 text-white">
                     <div class="col">
-                        <label for="year">Expresion Regular</label>
-                        <input class="form-control" type="number" placeholder="Expresion regular">
+                        <label for="exp_regular">Expresion Regular</label>
+                        <input class="form-control" type="text" placeholder="Expresion regular" required>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-10">
-                        <input type="button" class="btn btn-primary mb-3" value="Agregar Atributo">
+                        <input type="button" class="btn btn-primary mb-3" value="Agregar Atributo" required>
                     </div>
                 </div>
             </form>
         </div>
         <div class="col-8 offset-2 pt-3 bg-dark">
-            <div class="btn-group dropright">
-                <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Dropright
-                </button>
-                <div class="dropdown-menu">
-                  <p>Dato</p>
-                </div>
-              </div>
             <h1 class="offset-3 mb-2 text-white-50">Editar/Eliminar Atributo</h1>
-            
+            <div id="prueba"></div>
         </div>
     </div>
+    <script src="form_dinamico.js"></script>
 </body>
 </html>
