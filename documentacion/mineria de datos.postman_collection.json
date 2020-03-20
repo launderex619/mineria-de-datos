@@ -71,38 +71,91 @@
 			"name": "Configuracion",
 			"item": [
 				{
-					"name": "Obtener configuracion",
+					"name": "Obtener configuracion base de datos",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"method": "GET",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
-							"raw": "localhost:3000/configuracion/nombre_configuracion",
+							"raw": "localhost:3000/configuracion/0_plantilla-database.json",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
 								"configuracion",
-								"nombre_configuracion"
+								"0_plantilla-database.json"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Modificar archivo de configuracion",
+					"name": "Obtener configuracion archivo",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
-						"method": "PATCH",
+						"method": "GET",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
-							"raw": "localhost:3000/configuracion/nombre_configuracion",
+							"raw": "localhost:3000/configuracion/1_plantilla-file.json",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
 								"configuracion",
-								"nombre_configuracion"
+								"1_plantilla-file.json"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear archivo de configuracion",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"descripcion\": \"Archivo properties de un archivo custom\",\n    \"version\": null,\n    \"mongo\": false,\n    \"nombre_base_de_datos\": null,\n    \"tablas_base_de_datos\": null,\n    \"atributos_base_de_datos\": null,\n    \"atributos_archivo_creado\": [\n        {\n            \"nombre_atributo\": \"_id\",\n            \"tipo_de_dato\": \"String\",\n            \"target\": false,\n            \"expresion_regular\": \"pendiente_definir\"\n        },\n        {\n            \"nombre_atributo\": \"Name\",\n            \"tipo_de_dato\": \"String\",\n            \"target\": false,\n            \"expresion_regular\": \"pendiente_definir\"\n        },\n        {\n            \"nombre_atributo\": \"Platform\",\n            \"tipo_de_dato\": \"String\",\n            \"target\": false,\n            \"expresion_regular\": \"pendiente_definir\"\n        },\n        {\n            \"nombre_atributo\": \"Year_of_Release\",\n            \"tipo_de_dato\": \"Number\",\n            \"target\": false,\n            \"expresion_regular\": \"pendiente_definir\"\n        },\n        {\n            \"nombre_atributo\": \"Genre\",\n            \"tipo_de_dato\": \"String\",\n            \"target\": false,\n            \"expresion_regular\": \"pendiente_definir\"\n        },\n        {\n            \"nombre_atributo\": \"Publisher\",\n            \"tipo_de_dato\": \"String\",\n            \"target\": false,\n            \"expresion_regular\": \"pendiente_definir\"\n        },\n        {\n            \"nombre_atributo\": \"NA_Sales\",\n            \"tipo_de_dato\": \"Number\",\n            \"target\": false,\n            \"expresion_regular\": \"pendiente_definir\"\n        },\n        {\n            \"nombre_atributo\": \"EU_Sales\",\n            \"tipo_de_dato\": \"Number\",\n            \"target\": false,\n            \"expresion_regular\": \"pendiente_definir\"\n        },\n        {\n            \"nombre_atributo\": \"JP_Sales\",\n            \"tipo_de_dato\": \"Number\",\n            \"target\": false,\n            \"expresion_regular\": \"pendiente_definir\"\n        },\n        {\n            \"nombre_atributo\": \"Other_Sales\",\n            \"tipo_de_dato\": \"Number\",\n            \"target\": false,\n            \"expresion_regular\": \"pendiente_definir\"\n        },\n        {\n            \"nombre_atributo\": \"Global_Sales\",\n            \"tipo_de_dato\": \"Number\",\n            \"target\": false,\n            \"expresion_regular\": \"pendiente_definir\"\n        },\n        {\n            \"nombre_atributo\": \"Critic_Score\",\n            \"tipo_de_dato\": \"Number\",\n            \"target\": false,\n            \"expresion_regular\": \"pendiente_definir\"\n        },\n        {\n            \"nombre_atributo\": \"Critic_Count\",\n            \"tipo_de_dato\": \"Number\",\n            \"target\": false,\n            \"expresion_regular\": \"pendiente_definir\"\n        },\n        {\n            \"nombre_atributo\": \"User_Score\",\n            \"tipo_de_dato\": \"Number\",\n            \"target\": false,\n            \"expresion_regular\": \"pendiente_definir\"\n        },\n        {\n            \"nombre_atributo\": \"User_Count\",\n            \"tipo_de_dato\": \"Number\",\n            \"target\": false,\n            \"expresion_regular\": \"pendiente_definir\"\n        },\n        {\n            \"nombre_atributo\": \"Developer\",\n            \"tipo_de_dato\": \"String\",\n            \"target\": false,\n            \"expresion_regular\": \"pendiente_definir\"\n        },\n        {\n            \"nombre_atributo\": \"Rating\",\n            \"tipo_de_dato\": \"String\",\n            \"target\": false,\n            \"expresion_regular\": \"pendiente_definir\"\n        }\n    ],\n    \"nombre_archivo_creado\": null,\n    \"valor_nulo\": \"?\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/configuracion",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"configuracion"
+							],
+							"query": [
+								{
+									"key": "descripcion",
+									"value": "otra descripcion",
+									"disabled": true
+								},
+								{
+									"key": "tablas_archivo_creado",
+									"value": null,
+									"disabled": true
+								}
 							]
 						}
 					},
@@ -120,14 +173,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/archivo/version",
+							"raw": "localhost:3000/archivo/2_nuevo-archivo-configuracion.json",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
 								"archivo",
-								"version"
+								"2_nuevo-archivo-configuracion.json"
 							]
 						}
 					},
@@ -138,15 +191,32 @@
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "archivo",
+									"type": "file",
+									"src": "/home/carlos/Documentos/universidad/mineria de datos/proyecto/base de datos/videogames-sales-dataset/Video_Games_Sales_as_at_22_Dec_2016.csv"
+								}
+							]
+						},
 						"url": {
-							"raw": "localhost:3000/archivo/version",
+							"raw": "localhost:3000/archivo/2_nuevo-archivo-configuracion.json",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
 								"archivo",
-								"version"
+								"2_nuevo-archivo-configuracion.json"
+							],
+							"query": [
+								{
+									"key": "archivo",
+									"value": null,
+									"disabled": true
+								}
 							]
 						}
 					},
