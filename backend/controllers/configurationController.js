@@ -5,7 +5,7 @@ exports.getConfiguration = async (req, res) => {
     const configFile = `${__dirname}/../files/properties/${req.params.version}`;
     fs.readFile(configFile, (err, data) => {
       if (err) {
-        return res.status(404).json({
+        return res.status(500).json({
           status: 'fallo',
           mensaje: err.message
         });
@@ -17,7 +17,7 @@ exports.getConfiguration = async (req, res) => {
       });
     });
   } catch (err) {
-    res.status(404).json({
+    res.status(500).json({
       status: 'fallo',
       mensaje: err
     });
@@ -33,7 +33,7 @@ exports.createConfiguration = async (req, res) => {
     // leer archivo settings.json
     fs.readFile(settingsPath, (err, data) => {
       if (err) {
-        return res.status(404).json({
+        return res.status(500).json({
           status: 'fallo',
           mensaje: err.message
         });
@@ -49,7 +49,7 @@ exports.createConfiguration = async (req, res) => {
       // actualiza el archivo settings.json
       fs.writeFile(settingsPath, JSON.stringify(settingsFile), erro => {
         if (erro) {
-          return res.status(404).json({
+          return res.status(500).json({
             status: 'fallo',
             mensaje: erro.message
           });
@@ -61,7 +61,7 @@ exports.createConfiguration = async (req, res) => {
           JSON.stringify(config),
           error => {
             if (error) {
-              return res.status(404).json({
+              return res.status(500).json({
                 status: 'fallo',
                 mensaje: error.message
               });
@@ -75,7 +75,7 @@ exports.createConfiguration = async (req, res) => {
       });
     });
   } catch (err) {
-    res.status(404).json({
+    res.status(500).json({
       status: 'fallo',
       mensaje: err
     });

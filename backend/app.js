@@ -1,5 +1,6 @@
 const express = require('express');
 const morgan = require('morgan');
+const fileUpload = require('express-fileupload');
 
 const versionRoutes = require('./routes/version');
 const configurationRoutes = require('./routes/configuracion');
@@ -14,6 +15,7 @@ if (process.env.NODE_ENV === 'development') {
 }
 app.use(express.json());
 app.use(express.static(`${__dirname}/public`));
+app.use(fileUpload());
 app.use((req, res, next) => {
   req.requestTime = new Date().toISOString();
   next();

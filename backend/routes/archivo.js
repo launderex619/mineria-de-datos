@@ -1,11 +1,11 @@
 const express = require('express');
-const archivoControlador = require('../controllers/archivoControlador');
+const fileController = require('../controllers/fileController');
 
 const router = express.Router();
 
 router
   .route('/:version')
-  .get(archivoControlador.obtenerArchivo)
-  .post(archivoControlador.subirArchivo);
+  .get(fileController.getFile)
+  .post(fileController.postFile);
 
 module.exports = router;
