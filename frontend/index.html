@@ -9,8 +9,7 @@
 <body>
     <div class="container pt-5">
         <!-- Menu  -->
-        <div class="mb-2 offset-2">
-            <a href="#" class="btn btn-info" role="button">Cargar nuevo set</a>
+        <div class="mb-3 offset-2">
             <a href="#" class="btn btn-info" role="button">Regresar a version anterior</a>
             <a href="#" class="btn btn-info" role="button">Guardar como</a>
             <a href="data_set_form.html" class="btn btn-info" role="button">Editar Data Set</a>
@@ -21,12 +20,12 @@
                 <h1>Data Set</h1>
             </div>
             <div class="col-9">
-                <div class="offset-6">
-                    <form class="form-inline pt-2">
-                        <label for="sql" class="">Sentencia SQL</label>
-                        <input type="text" class="form-control mr-sm-2" id="sql" placeholder="Ingresa Sentencia SQL">
-                        <input type="button" class="btn btn-success" value="Enviar">
-                    </form>
+                <div class="offset-5">
+                    <form ref='uploadForm' 
+                    id='uploadForm' action='http://localhost:3000/upload' method='post' encType="multipart/form-data">
+                        <input type="file" class="btn btn-light" name="sampleFile" />
+                        <input type='submit' class="btn btn-primary" value='Subir archivo' />
+                    </form>   
                 </div>
                 
             </div>
@@ -41,6 +40,35 @@
             </div>
             <!--Tabla donde mostrara el Data Set-->
             <div class="col-10 border">
+                <table class="table">
+                    <thead>
+                        <th>
+
+                        </th>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row pt-2 mb-3">
+            <div class="col-4">
+                <h2>Base de datos Mongo</h2>
+            </div>
+            <div class="col-8">
+                <div class="offset-5">
+                    <form class="form-inline pt-2">
+                        <label for="sql" class="">Sentencia SQL</label>
+                        <input type="text" class="form-control mr-sm-2" id="sql" placeholder="Ingresa Sentencia SQL">
+                        <input type="button" class="btn btn-success" value="Enviar">
+                    </form>   
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <!-- Tabla donde mostrara Mongo -->
+            <div class="col border">
                 <table class="table">
                     <thead>
                         <th>

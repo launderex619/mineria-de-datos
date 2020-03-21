@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Instancia</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="main.css">
     
 </head>
 <body>
@@ -18,7 +19,7 @@
             <a href="data_set_form.html" class="btn btn-info" role="button">Editar Data Set</a>
             <a href="resumen_estadistico.html" class="btn btn-info" role="button">Resumen estadistico</a>
         </div>
-        <div class="col-8 offset-2 pt-3 bg-dark mb-2">
+        <div class="col-8 offset-2 pt-3 bg-dark mb-2 border-radius">
             <h1 class="offset-3 text-white-50">Descripcion Data Set</h1>
             <div class="row offset-2">
                 <div class="col-8 mb-3">
@@ -29,7 +30,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-8 offset-2 pt-3 bg-dark mb-2">
+        <div class="col-8 offset-2 pt-3 bg-dark mb-2 border-radius">
             <h1 class="offset-4 mb-2 text-white-50">Crear Instancia</h1>
             <form method="POST">
                 <div class="row mb-3 text-white">
@@ -85,7 +86,7 @@
                 </div>
             </form>
         </div>
-        <div class="col-8 offset-2 pt-3 bg-dark">
+        <div class="col-8 offset-2 mb-2 pt-3 bg-dark border-radius">
             <h1 class="offset-4 mb-2 text-white-50">Crear Atributo</h1>
             <form method="POST">
                 <div class="row mb-3 text-white">
@@ -93,10 +94,13 @@
                         <label for="name">Nombre</label>
                         <input class="form-control" type="text" placeholder="Nombre del atributo" required>
                     </div>
-                    <div class="col">
+                    <div class="form-group mr-2">
                         <label for="tipo_dato">Tipo de dato</label>
-                        <input class="form-control" type="text" placeholder="Dato" required>
-                    </div>
+                        <select name="tipo_dato" class="form-control" >
+                            <option>Númerico</option>
+                            <option>Categorico</option>
+                        </select>
+                      </div>
                 </div>
                 <div class="row mb-3 text-white">
                     <div class="col">
@@ -111,9 +115,9 @@
                 </div>
             </form>
         </div>
-        <div class="col-8 offset-2 pt-3 bg-dark">
+        <div class="col-8 offset-2 pt-3 bg-dark border-radius">
             <h1 class="offset-3 mb-2 text-white-50">Editar/Eliminar Atributo</h1>
-            <div id="prueba"></div>
+            <div id="prueba" class=""></div>
         </div>
     </div>
     <script src="form_dinamico.js"></script>

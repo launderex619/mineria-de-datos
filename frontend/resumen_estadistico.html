@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resumen Estadistico</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="main.css">
     <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
 </head>
 <body>
@@ -33,17 +34,42 @@
 
             </tbody>
         </table>
-        <div>
-            <h2>BoxPlot</h2>
-            <div id="boxplot">
-
+        <h2>Métricas estadísticas univariables</h2>
+        <div class="row bg-dark pt-3 text-white border-radius">
+            <div class="col">
+                <p>Media:</p>
+            </div>
+            <div class="col">
+                <p>Mediana:</p>
+            </div>
+            <div class="col">
+                <p>Moda:</p>
+            </div>
+            <div class="col">
+                <p>Desviación estándar:</p>
             </div>
         </div>
-        <div>
-            <h2>Histograma</h2>
-            <div id="histograma">
-
+        <div class="row">
+            <div class="col">
+                <h2>BoxPlot</h2>
+                <div id="boxplot">
+    
+                </div>
             </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h2>Histograma</h2>
+                <div id="histograma">
+    
+                </div>
+            </div>
+        </div>
+        
+        <h2>Métricas estadísticas bivariables</h2>
+        <div class="row mb-3 bg-dark text-white pt-3 border-radius">
+            <div class="col mb-3">Correlación de Pearson (Númerico)</div>
+            <div class="col mb-3">Correlación Chi-cuadrada (Categoricos) </div>
         </div>
         
     </div>
