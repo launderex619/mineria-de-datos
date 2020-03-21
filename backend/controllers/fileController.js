@@ -10,7 +10,6 @@ exports.getFile = async (req, res) => {
     const datasetPath = path.resolve(
       `files/datasets/${propertiesFile.nombre_archivo_creado}`
     );
-    console.log(propertiesFile.nombre_archivo_creado);
     res.status(200).download(datasetPath, propertiesFile.nombre_archivo_creado);
   } catch (err) {
     res.status(500).json({
