@@ -1,20 +1,18 @@
 const express = require('express');
-const datoControlador = require('../controllers/datoControlador');
+const dataController = require('../controllers/dataController');
 
 const router = express.Router();
 
 router
   .route('/:version')
-  .get(datoControlador.obtenerDatos)
-  .post(datoControlador.crearInstancia)
-  .patch(datoControlador.modificarInstancia);
+  .get(dataController.getData)
+  .post(dataController.addInstance)
+  .patch(dataController.updateInstance);
 
-router.route('/:version/:id').delete(datoControlador.eliminarInstancia);
+router.route('/:version/:id').delete(dataController.deleteInstance);
 
-router.route('/:version/atributo').post(datoControlador.agregarAtributo);
+router.route('/:version/atributo').post(dataController.addAtrib);
 
-router
-  .route('/:version/atributo/:nombre')
-  .delete(datoControlador.eliminarAtributo);
+router.route('/:version/atributo/:nombre').delete(dataController.deleteAtrib);
 
 module.exports = router;

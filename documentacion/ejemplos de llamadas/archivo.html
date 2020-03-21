@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subir archivo</title>
+</head>
+<body>
+    <h1>
+        Archivo
+    </h1>
+    <form class="form" id="myForm">
+        <input type="file" name="archivo" id="archivo"><br>
+        <button type="submit">Subir csv</button>
+    </form>
+    <div id="success">
+
+    </div>
+    <script>
+        const myForm = document.getElementById('myForm');
+        const archivo = document.getElementById('archivo');
+        const divS = document.getElementById('success');
+        myForm.addEventListener("submit", e => {
+            e.preventDefault();
+
+            const formData = new FormData();
+
+            formData.append("archivo", archivo.files[0]);
+            const response = fetch('http://localhost:3000/archivo/2_nuevo-archivo-configuracion.json', 
+            {
+                method: 'POST',
+                body: formData
+            })
+            .then( response => {
+                console.log(response);
+                return response.json();
+            })
+            .then( res => {
+                console.log(res);
+                divS.innerHTML += 'Subido con exito' + res;
+            })
+
+        })
+    </script>
+</body>
+</html>

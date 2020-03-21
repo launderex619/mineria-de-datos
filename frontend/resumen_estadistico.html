@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resumen Estadistico</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
 </head>
 <body>
     <div class="container pt-5">
+        <!-- Menu -->
         <div class="mb-2 offset-2">
             <a href="index.html" class="btn btn-info" role="button">Inicio</a>
             <a href="#" class="btn btn-info" role="button">Cargar nuevo set</a>
@@ -16,6 +18,7 @@
             <a href="data_set_form.html" class="btn btn-info" role="button">Editar Data Set</a>
             <a href="resumen_estadistico.html" class="btn btn-info" role="button">Resumen estadistico</a>
         </div>
+        <!-- Tabla donde mostrara el resumen de atributos -->
         <h1>Atributos</h1>
         <table class="table">
             <thead>
@@ -30,7 +33,21 @@
 
             </tbody>
         </table>
+        <div>
+            <h2>BoxPlot</h2>
+            <div id="boxplot">
+
+            </div>
+        </div>
+        <div>
+            <h2>Histograma</h2>
+            <div id="histograma">
+
+            </div>
+        </div>
+        
     </div>
-    
+    <script src="histograma.js"></script>
+    <script src="boxplot.js"></script>
 </body>
 </html>
