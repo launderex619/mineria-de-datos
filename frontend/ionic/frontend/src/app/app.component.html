@@ -6,6 +6,17 @@
           <ion-list-header>Version</ion-list-header>
           <ion-note>{{version}}</ion-note>
 
+          <ion-menu-toggle auto-hide= "false">
+            <ion-item>
+              <ion-icon slot="start" name="git-branch"></ion-icon>
+              <ion-label>Version</ion-label>
+              <ion-select interface="popover" [(ngModel)]="value" (ionChange)="changeVersion(value)">
+                <div *ngFor="let name of versionNames">
+                  <ion-select-option [value]="name">{{name}}</ion-select-option>
+                </div>
+              </ion-select>
+            </ion-item>
+          </ion-menu-toggle>
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
             <ion-item (click)="selectedIndex = i" routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" [class.selected]="selectedIndex == i">
               <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>

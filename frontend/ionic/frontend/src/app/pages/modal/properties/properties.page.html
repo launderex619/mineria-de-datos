@@ -1,0 +1,153 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title *ngIf="properties">
+      Archivo properties: {{properties.version}}
+      <ion-buttons class="ion-float-right">
+        <ion-button *ngIf="!isEditionMode" (click)="isEditionMode = !isEditionMode">Editar</ion-button>
+        <ion-button *ngIf="isEditionMode" (click)="isEditionMode = !isEditionMode">Modo edicion</ion-button>
+      </ion-buttons>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+
+  <div *ngIf="!isEditionMode">
+    <ion-card *ngIf="properties" class="ion-padding">
+      <ion-list>
+        <ion-item>
+          <ion-label position="floating">Descripcion</ion-label>
+          <ion-textarea [value]="properties.descripcion" readonly></ion-textarea>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Version</ion-label>
+          <ion-input [value]="properties.version" readonly></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Valor nulo</ion-label>
+          <ion-input [value]="properties.valor_nulo" readonly></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Set de datos</ion-label>
+          <div *ngIf="properties.mongo">
+            <ion-input [value]="properties.nombre_base_de_datos" readonly></ion-input>
+          </div>
+          <div *ngIf="!properties.mongo">
+            <ion-input [value]="properties.nombre_archivo_creado" readonly></ion-input>
+          </div>
+        </ion-item>
+      </ion-list>
+      <ion-grid>
+        <ion-list>
+          Atributos
+          <div *ngFor="let atributo of properties.atributos_archivo_creado">
+            <ion-row>
+              <ion-col>
+                <ion-item>
+                  <ion-label position="floating">Atributo</ion-label>
+                  <ion-input [value]="atributo.nombre_atributo" readonly></ion-input>
+                </ion-item>
+              </ion-col>
+              <ion-col>
+                <ion-item>
+                  <ion-label position="floating">Tipo de dato</ion-label>
+                  <ion-input [value]="atributo.tipo_de_dato" readonly></ion-input>
+                </ion-item>
+              </ion-col>
+              <ion-col>
+                <ion-item>
+                  <ion-label position="floating">RegExp</ion-label>
+                  <ion-input [value]="atributo.expresion_regular" readonly></ion-input>
+                </ion-item>
+              </ion-col>
+              <ion-col>
+                <ion-item>
+                  <ion-label position="floating">Target</ion-label>
+                  <ion-checkbox [checked]="atributo.target" disabled="true"></ion-checkbox>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+          </div>
+        </ion-list>
+      </ion-grid>
+    </ion-card>
+  </div>
+
+  <div *ngIf="isEditionMode">
+    <form [formGroup]="propertiesGroup" (ngSubmit)="createProperties()">
+      <ion-card *ngIf="properties">
+        <ion-list>
+          <ion-item>
+            <ion-label position="floating">Descripcion</ion-label>
+            <ion-textarea [value]="properties.descripcion" formControlName="descripcion"></ion-textarea>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Version</ion-label>
+            <ion-input [value]="properties.version" formControlName="version"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Valor nulo</ion-label>
+            <ion-input [value]="properties.valor_nulo" formControlName="valor_nulo"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Set de datos</ion-label>
+            <ion-input [value]="properties.nombre_archivo_creado" formControlName="nombre_archivo_creado"></ion-input>
+          </ion-item>
+        </ion-list>
+        <ion-grid>
+          <ion-list>
+            Atributos
+            <div formArrayName="atributos_archivo_creado">
+              <div [formGroupName]="i"
+                *ngFor="let atributo of propertiesGroup.controls.atributos_archivo_creado.controls; let i = index">
+                <ion-row>
+                  <ion-col>
+                    <ion-item>
+                      <ion-label position="floating">Atributo</ion-label>
+                      <ion-input [value]="atributo.nombre_atributo" formControlName="nombre_atributo"></ion-input>
+                    </ion-item>
+                  </ion-col>
+                  <ion-col>
+                    <ion-item>
+                      <ion-label position="floating">Tipo de dato</ion-label>
+                      <ion-input [value]="atributo.tipo_de_dato" formControlName="tipo_de_dato"></ion-input>
+                    </ion-item>
+                  </ion-col>
+                  <ion-col>
+                    <ion-item>
+                      <ion-label position="floating">RegExp</ion-label>
+                      <ion-input [value]="atributo.expresion_regular" formControlName="expresion_regular"></ion-input>
+                    </ion-item>
+                  </ion-col>
+                  <ion-col>
+                    <ion-item>
+                      <ion-label position="floating">Target</ion-label>
+                      <ion-checkbox [checked]="atributo.target" formControlName="target"></ion-checkbox>
+                    </ion-item>
+                  </ion-col>
+                  <ion-col>
+                    <ion-buttons>
+                      <ion-button (click)="removeControl(i)">
+                        <ion-icon color="danger" name="trash"></ion-icon>
+                      </ion-button>
+                    </ion-buttons>
+                  </ion-col>
+                </ion-row>
+              </div>
+            </div>
+            <div>
+              <ion-buttons>
+                <ion-button (click)="addControl()">
+                  <ion-icon color="secondary" name="add"></ion-icon> Agregar Atributo
+                </ion-button>
+                <ion-button (click)="saveProperties()">
+                  <ion-icon color="primary" name="checkmark-circle"></ion-icon> Guardar
+                </ion-button>
+              </ion-buttons>
+            </div>
+          </ion-list>
+        </ion-grid>
+      </ion-card>
+    </form>
+  </div>
+
+</ion-content>

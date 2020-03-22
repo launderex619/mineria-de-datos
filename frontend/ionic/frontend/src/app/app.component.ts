@@ -18,20 +18,21 @@ export class AppComponent implements OnInit {
     {
       title: 'Set de Datos',
       url: '/tabla',
-      icon: 'mail'
+      icon: 'copy'
     },
     {
       title: 'Versiones',
       url: '/historico',
-      icon: 'paper-plane'
+      icon: 'git-network'
     },
     {
       title: 'Configuracion',
       url: '/folder/Favorites',
-      icon: 'heart'
+      icon: 'settings'
     }
   ];
   public labels = ['Carlos Carvajal Vazquez', 'Jose Israel Flores Campos', 'Eduardo Guerra Alvarez'];
+  public versionNames = null;
 
   constructor(
     private platform: Platform,
@@ -53,13 +54,25 @@ export class AppComponent implements OnInit {
   async getInfo() {
     try {
       const actualVersion = await this.versiones.getActualVersion().toPromise();
+      const allVersions = await this.versiones.getVersions().toPromise();
       if (actualVersion.status === 'ok') {
-        this.version = actualVersion.version + '.json';
+        this.version = actualVersion.version;
         this.appPages[0].url = this.appPages[0].url + '/' + this.version;
+      }
+      if (allVersions.status === 'ok') {
+        this.versionNames = allVersions.versiones;
       }
     } catch (error) {
       console.error(error);
     }
+  }
+
+  changeVersion(name) {
+    console.log(name);
+    
+    this.version = name;
+    this.appPages[0].url = 'tabla/' + this.version;
+    console.log(this.version);
   }
 
   ngOnInit() {
