@@ -23,7 +23,7 @@ import { PropertiesPage } from './pages/modal/properties/properties.page';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule,
+    FormsModule
   ],
   providers: [
     StatusBar,
