@@ -10,6 +10,7 @@ import { PropertiesService } from 'src/app/services/properties.service';
 })
 export class PropertiesPage implements OnInit {
   properties = null;
+  createNew = false;
   isEditionMode = false;
   propertiesGroup: FormGroup;
 
@@ -20,6 +21,7 @@ export class PropertiesPage implements OnInit {
     private toastController: ToastController
   ) {
     this.properties = this.navParams.get('properties');
+    this.createNew = this.navParams.get('isEditing');
     console.log(this.properties);
     this.propertiesGroup = this.form.group({
       descripcion: [this.properties.descripcion, Validators.required],
@@ -27,9 +29,9 @@ export class PropertiesPage implements OnInit {
       nombre_base_de_datos: [null],
       tablas_base_de_datos: [null],
       atributos_base_de_datos: [null],
-      version: [this.properties.version, Validators.required],
+      version: [this.properties.version],
       valor_nulo: [this.properties.valor_nulo, Validators.required],
-      nombre_archivo_creado: [this.properties.nombre_archivo_creado, Validators.required],
+      nombre_archivo_creado: [this.properties.nombre_archivo_creado],
       atributos_archivo_creado: this.form.array([this.getArrayAtribb()])
     });
     this.fillInformation();
@@ -74,7 +76,13 @@ export class PropertiesPage implements OnInit {
 
   async saveProperties() {
     console.log(this.propertiesGroup);
-    const resp = await this.propertiesService.createProperties(this.propertiesGroup.value).toPromise();
+    let resp;
+    if ( this.createNew ) {
+      resp = await this.propertiesService.createProperties(this.propertiesGroup.value).toPromise();
+    }
+    else {
+      resp = await this.propertiesService.modifyProperties(this.propertiesGroup.value).toPromise();
+    }
     // @ts-ignore
     if (resp.status === 'ok') {
       this.presentToast('Archivo properties modificado correctamente');

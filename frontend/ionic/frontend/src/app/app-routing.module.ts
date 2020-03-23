@@ -16,7 +16,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/historico/historico.module').then( m => m.HistoricoPageModule)
   },
   {
-    path: 'configuration',
+    path: 'configuracion/:version',
     loadChildren: () => import('./pages/configuration/configuration.module').then( m => m.ConfigurationPageModule)
   }
 ];

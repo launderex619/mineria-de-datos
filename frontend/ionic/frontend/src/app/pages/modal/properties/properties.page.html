@@ -80,18 +80,18 @@
             <ion-label position="floating">Descripcion</ion-label>
             <ion-textarea [value]="properties.descripcion" formControlName="descripcion"></ion-textarea>
           </ion-item>
-          <ion-item>
+          <!-- <ion-item>
             <ion-label position="floating">Version</ion-label>
             <ion-input [value]="properties.version" formControlName="version"></ion-input>
-          </ion-item>
+          </ion-item> -->
           <ion-item>
             <ion-label position="floating">Valor nulo</ion-label>
             <ion-input [value]="properties.valor_nulo" formControlName="valor_nulo"></ion-input>
           </ion-item>
-          <ion-item>
+          <!-- <ion-item>
             <ion-label position="floating">Set de datos</ion-label>
             <ion-input [value]="properties.nombre_archivo_creado" formControlName="nombre_archivo_creado"></ion-input>
-          </ion-item>
+          </ion-item> -->
         </ion-list>
         <ion-grid>
           <ion-list>
@@ -146,7 +146,7 @@
                 <ion-button (click)="addControl()">
                   <ion-icon color="secondary" name="add"></ion-icon> Agregar Atributo
                 </ion-button>
-                <ion-button (click)="saveProperties()">
+                <ion-button [disabled]="propertiesGroup.invalid" (click)="saveProperties()">
                   <ion-icon color="primary" name="checkmark-circle"></ion-icon> Guardar
                 </ion-button>
               </ion-buttons>

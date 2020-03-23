@@ -1,9 +1,37 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>configuration</ion-title>
+    <ion-title>Menu de configuracion</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-card class="ion-padding ion-text-center" (click)="showProperties()">
+          <ion-card-title>
+            Mostrar archivo properties
+          </ion-card-title>
+          <ion-card-content >
+            <ion-avatar>
+              <img src="./../../../assets/settings.png">
+            </ion-avatar>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card class="ion-padding ion-text-center" (click)="createProperties()">
+          <ion-card-title >
+            Crear archivo properties
+          </ion-card-title>
+          <ion-card-content >
+            <ion-avatar>
+              <img src="./../../../assets/settings.png">
+            </ion-avatar>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
 </ion-content>

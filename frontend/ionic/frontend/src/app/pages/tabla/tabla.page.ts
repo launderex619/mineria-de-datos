@@ -26,7 +26,7 @@ export class TablaPage implements OnInit {
     private modalController: ModalController
     ) { }
 
-  ngOnInit() {
+  ionViewDidEnter() {
     const version = this.route.snapshot.paramMap.get('version');
     this.nameDataset = version;
     this.getProperties(version);
@@ -75,6 +75,7 @@ export class TablaPage implements OnInit {
     const modal = await this.modalController.create({
       component: PropertiesPage,
       componentProps: {
+        isEditing: true,
         properties: this.properties
       }
     });

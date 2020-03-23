@@ -39,4 +39,25 @@ export class PropertiesService {
         })
       );
   }
+
+  modifyProperties(properties) {
+    properties.version = null;
+    return this.http
+      .patch(`${this.API_URL}`, {
+        descripcion: properties.descripcion,
+        version: properties.version,
+        mongo: properties.mongo,
+        nombre_base_de_datos: properties.nombre_base_de_datos,
+        tablas_base_de_datos: properties.tablas_base_de_datos,
+        atributos_base_de_datos: properties.atributos_base_de_datos,
+        atributos_archivo_creado: properties.atributos_archivo_creado,
+        nombre_archivo_creado: properties.nombre_archivo_creado,
+        valor_nulo: properties.valor_nulo
+      })
+      .pipe(
+        map(resp => {
+          return resp;
+        })
+      );
+  }
 }
