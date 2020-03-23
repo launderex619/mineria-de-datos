@@ -109,7 +109,14 @@
                   <ion-col>
                     <ion-item>
                       <ion-label position="floating">Tipo de dato</ion-label>
-                      <ion-input [value]="atributo.tipo_de_dato" formControlName="tipo_de_dato"></ion-input>
+                      <!-- <ion-input [value]="atributo.tipo_de_dato" formControlName="tipo_de_dato"></ion-input> -->
+                      <ion-select [value]="atributo.tipo_de_dato" placeholder="Elige el tipo" formControlName="tipo_de_dato">
+                        <ion-select-option value="Categorico">Categorico</ion-select-option>
+                        <ion-select-option value="Numerico">Numerico</ion-select-option>
+                        <ion-select-option value="Texto">Texto</ion-select-option>
+                        <ion-select-option value="Fecha">Fecha</ion-select-option>
+
+                      </ion-select>
                     </ion-item>
                   </ion-col>
                   <ion-col>

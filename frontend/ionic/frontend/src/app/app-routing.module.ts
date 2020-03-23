@@ -16,8 +16,8 @@ const routes: Routes = [
     loadChildren: () => import('./pages/historico/historico.module').then( m => m.HistoricoPageModule)
   },
   {
-    path: 'properties',
-    loadChildren: () => import('./pages/modal/properties/properties.module').then( m => m.PropertiesPageModule)
+    path: 'configuration',
+    loadChildren: () => import('./pages/configuration/configuration.module').then( m => m.ConfigurationPageModule)
   }
 ];
 

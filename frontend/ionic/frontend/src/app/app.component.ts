@@ -27,7 +27,7 @@ export class AppComponent implements OnInit {
     },
     {
       title: 'Configuracion',
-      url: '/folder/Favorites',
+      url: '/configuracion',
       icon: 'settings'
     }
   ];
@@ -60,6 +60,7 @@ export class AppComponent implements OnInit {
         // @ts-ignore
         this.version = actualVersion.version;
         this.appPages[0].url = this.appPages[0].url + '/' + this.version;
+        this.appPages[2].url = this.appPages[2].url + '/' + this.version;
       }
       // @ts-ignore
       if (allVersions.status === 'ok') {
@@ -75,6 +76,7 @@ export class AppComponent implements OnInit {
     console.log(name);
     this.version = name;
     this.appPages[0].url = 'tabla/' + this.version;
+    this.appPages[2].url = 'configuracion/' + this.version;
     console.log(this.version);
   }
 
