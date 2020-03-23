@@ -1,4 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { VersionesService } from 'src/app/services/versiones.service';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-historico',
@@ -7,11 +9,36 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class HistoricoPage implements OnInit {
 
-  // tslint:disable-next-line: no-inferrable-types
-  @Input() nameDataset: string = '';
-  constructor() { }
+  versiones = null ;
+  constructor( private versionesService: VersionesService, private toastController: ToastController) { }
 
   ngOnInit() {
+  }
+
+  async ionViewDidEnter() {
+    try {
+      const resp = await this.versionesService.getVersions().toPromise();
+    // @ts-ignore
+      if (resp.status === 'ok') {
+        // @ts-ignore
+        this.versiones = resp.versiones;
+      }
+    } catch (error) {
+      // @ts-ignore
+      this.presentToast(resp.mensaje);
+    }
+  }
+
+  async presentToast(message) {
+    const toast = await this.toastController.create({
+      message,
+      duration: 2000
+    });
+    toast.present();
+  }
+
+  download(version) {
+    console.log(version);
   }
 
 }
