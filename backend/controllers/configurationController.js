@@ -81,3 +81,62 @@ exports.createConfiguration = async (req, res) => {
     });
   }
 };
+
+exports.modifyConfiguration = async (req, res) => {
+  try {
+    const config = JSON.parse(JSON.stringify(req.body));
+    const settingsPath = `${__dirname}/../files/settings.json`;
+    const propertiesPath = `${__dirname}/../files/properties`;
+
+    config.nombre_archivo_creado = null;
+    // leer archivo settings.json
+    fs.readFile(settingsPath, (err, data) => {
+      if (err) {
+        return res.status(500).json({
+          status: 'fallo',
+          mensaje: err.message
+        });
+      }
+      const settingsFile = JSON.parse(data);
+      settingsFile.version_counter += 1;
+      const versionCounter = settingsFile.version_counter;
+      const fileName = `${versionCounter}_modificar-configuracion.json`;
+      config.version = fileName;
+      settingsFile.last_version = fileName;
+      settingsFile.actual_version = fileName;
+
+      // actualiza el archivo settings.json
+      fs.writeFile(settingsPath, JSON.stringify(settingsFile), erro => {
+        if (erro) {
+          return res.status(500).json({
+            status: 'fallo',
+            mensaje: erro.message
+          });
+        }
+
+        // crea un nuevo archivo en la carpeta properties
+        fs.writeFile(
+          `${propertiesPath}/${fileName}`,
+          JSON.stringify(config),
+          error => {
+            if (error) {
+              return res.status(500).json({
+                status: 'fallo',
+                mensaje: error.message
+              });
+            }
+          }
+        );
+      });
+      res.status(200).json({
+        status: 'ok',
+        mensaje: `archivo modificado exitosamente: ${fileName}, es necesario subir el dataset correspondiente`
+      });
+    });
+  } catch (err) {
+    res.status(500).json({
+      status: 'fallo',
+      mensaje: err
+    });
+  }
+};
