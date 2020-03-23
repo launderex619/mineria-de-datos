@@ -13,6 +13,7 @@ export class ConfigurationPage implements OnInit {
   properties = null;
   constructor(private route: ActivatedRoute, private modalController: ModalController, private propertiesSerive: PropertiesService) {}
 
+  ngOnInit() {}
   ionViewDidEnter() {
     this.getProperties(this.route.snapshot.paramMap.get('version'));
   }

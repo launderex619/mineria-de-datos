@@ -26,6 +26,7 @@ export class TablaPage implements OnInit {
     private modalController: ModalController
     ) { }
 
+    ngOnInit() {}
   ionViewDidEnter() {
     const version = this.route.snapshot.paramMap.get('version');
     this.nameDataset = version;

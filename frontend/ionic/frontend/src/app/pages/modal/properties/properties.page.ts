@@ -79,8 +79,7 @@ export class PropertiesPage implements OnInit {
     let resp;
     if ( this.createNew ) {
       resp = await this.propertiesService.createProperties(this.propertiesGroup.value).toPromise();
-    }
-    else {
+    } else {
       resp = await this.propertiesService.modifyProperties(this.propertiesGroup.value).toPromise();
     }
     // @ts-ignore
