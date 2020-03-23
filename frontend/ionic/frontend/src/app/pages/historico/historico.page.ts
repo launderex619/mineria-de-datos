@@ -7,6 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class HistoricoPage implements OnInit {
 
+  // tslint:disable-next-line: no-inferrable-types
   @Input() nameDataset: string = '';
   constructor() { }
 

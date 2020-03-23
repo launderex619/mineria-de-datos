@@ -55,11 +55,15 @@ export class AppComponent implements OnInit {
     try {
       const actualVersion = await this.versiones.getActualVersion().toPromise();
       const allVersions = await this.versiones.getVersions().toPromise();
+      // @ts-ignore
       if (actualVersion.status === 'ok') {
+        // @ts-ignore
         this.version = actualVersion.version;
         this.appPages[0].url = this.appPages[0].url + '/' + this.version;
       }
+      // @ts-ignore
       if (allVersions.status === 'ok') {
+        // @ts-ignore
         this.versionNames = allVersions.versiones;
       }
     } catch (error) {
@@ -69,7 +73,6 @@ export class AppComponent implements OnInit {
 
   changeVersion(name) {
     console.log(name);
-    
     this.version = name;
     this.appPages[0].url = 'tabla/' + this.version;
     console.log(this.version);

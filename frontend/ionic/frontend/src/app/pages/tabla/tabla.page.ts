@@ -36,7 +36,9 @@ export class TablaPage implements OnInit {
   async getProperties(version) {
     try {
       const resp = await this.propertiesSerive.getProperties(version).toPromise();
-      if(resp.status === 'ok') {
+      // @ts-ignore
+      if (resp.status === 'ok') {
+        // @ts-ignore
         this.properties = resp.archivo;
         this.properties.atributos_archivo_creado.forEach(element => {
           this.columns.push({ name: element.nombre_atributo, prop: element.nombre_atributo });
@@ -50,8 +52,9 @@ export class TablaPage implements OnInit {
   async getData(version) {
     try {
       const resp = await this.dataService.getData(version).toPromise();
-      // eslin-disable-next-line
+      // @ts-ignore
       if (resp.status === 'ok') {
+        // @ts-ignore
         this.dataset = resp.datos;
         this.datasetCopy = [];
         if (this.dataset.length > 500) {

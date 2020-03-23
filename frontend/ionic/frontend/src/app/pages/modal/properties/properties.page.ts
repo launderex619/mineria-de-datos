@@ -75,9 +75,11 @@ export class PropertiesPage implements OnInit {
   async saveProperties() {
     console.log(this.propertiesGroup);
     const resp = await this.propertiesService.createProperties(this.propertiesGroup.value).toPromise();
+    // @ts-ignore
     if (resp.status === 'ok') {
       this.presentToast('Archivo properties modificado correctamente');
-      window.location.reload(true)
+      // tslint:disable-next-line: deprecation
+      window.location.reload(true);
     }
   }
 
