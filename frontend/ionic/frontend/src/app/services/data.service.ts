@@ -37,6 +37,26 @@ export class DataService {
     );
   }
 
+  addAttrib(version, object) {
+    console.log(object);
+    return this.http.post(`${this.API_URL}/${version}/atributo`, {
+      atributo: object.atributo,
+      valor: object.valor
+    }).pipe(
+      map(resp => {
+        return resp;
+      })
+    );
+  }
+
+  deleteAttrib(version, atributo) {
+    return this.http.delete(`${this.API_URL}/${version}/atributo/${atributo}`).pipe(
+      map(resp => {
+        return resp;
+      })
+    );
+  }
+
   editItem(version, index, object) {
     return this.http.patch(`${this.API_URL}/${version}`, {
       id: index,

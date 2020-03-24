@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
 import { PropertiesService } from 'src/app/services/properties.service';
 import { ModalController, ToastController, AlertController } from '@ionic/angular';
 import { PropertiesPage } from '../modal/properties/properties.page';
 import { ElementPage } from '../modal/element/element.page';
+import { FileService } from 'src/app/services/file.service';
 
 @Component({
   selector: 'app-tabla',
   templateUrl: './tabla.page.html',
-  styleUrls: ['./tabla.page.scss'],
+  styleUrls: ['./tabla.page.scss']
 })
 export class TablaPage implements OnInit {
-
   dataset = null;
   nameDataset = '';
   datasetCopy = null;
@@ -22,20 +22,21 @@ export class TablaPage implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private propertiesSerive: PropertiesService,
     private dataService: DataService,
     private modalController: ModalController,
     private toastController: ToastController,
-    private alertController: AlertController
-    ) { }
-
-    ngOnInit() {}
-  ionViewDidEnter() {
+    private alertController: AlertController,
+    private fileService: FileService
+  ) {
     const version = this.route.snapshot.paramMap.get('version');
     this.nameDataset = version;
     this.getProperties(version);
     this.getData(version);
   }
+
+  ngOnInit() {}
 
   async getProperties(version) {
     try {
@@ -63,7 +64,6 @@ export class TablaPage implements OnInit {
     });
     toast.present();
   }
-
 
   async getData(version) {
     try {
@@ -105,22 +105,23 @@ export class TablaPage implements OnInit {
   async askDelete(index) {
     console.log(index);
     const alert = await this.alertController.create({
-        header: 'Eliminar',
-        message: 'Estas seguro?',
-        buttons: [
-          {
-            text: 'No',
-            role: 'cancel',
-            cssClass: 'secondary',
-            handler: (blah) => { }
-          }, {
-            text: 'Si',
-            handler: () => {
-              this.deleteItem(index);
-            }
+      header: 'Eliminar',
+      message: 'Estas seguro?',
+      buttons: [
+        {
+          text: 'No',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: blah => {}
+        },
+        {
+          text: 'Si',
+          handler: () => {
+            this.deleteItem(index);
           }
-        ]
-      });
+        }
+      ]
+    });
     await alert.present();
   }
 
@@ -164,5 +165,113 @@ export class TablaPage implements OnInit {
       }
     });
     return await modal.present();
+  }
+
+  async addAtribb() {
+    let prompt = await this.alertController.create({
+      header: 'Crear Atributo',
+      message:
+        'Ingresa el nombre del nuevo atributo a generar, posteriormente el valor' +
+        ' que tendran todas las filas del atributo, por defecto se creara como tipo de dato numerico.' +
+        ' Se puede cambiar mas adelante en el menu de properties',
+      inputs: [
+        {
+          name: 'nombre_atributo',
+          type: 'text',
+          placeholder: 'Atributo ej. peso'
+        },
+        {
+          name: 'expresion_regular',
+          placeholder: 'Expresion regular'
+        },
+        {
+          name: 'valores',
+          type: 'number',
+          placeholder: 'Valores'
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancelar',
+          handler: data => {}
+        },
+        {
+          text: 'Guardar',
+          handler: async data => {
+            const atrib = {};
+            atrib[data.nombre_atributo] = data.valores;
+            data.tipo_de_dato = 'Numerico';
+            data.target = false;
+            const atributo = {
+              atributo: data,
+              valor: Array(this.dataset.length).fill(atrib)
+            };
+            try {
+              const resp = await this.dataService.addAttrib(this.properties.version, atributo).toPromise();
+              // tslint:disable-next-line: deprecation
+              window.location.reload(true);
+              // @ts-ignore
+              if (resp.status === 'ok') {
+                this.presentToast('Creado con exito');
+              } else {
+                // @ts-ignore
+                this.presentToast(resp.mensaje);
+              }
+            } catch (error) {
+              this.presentToast(error.error.mensaje);
+            }
+          }
+        }
+      ]
+    });
+    await prompt.present();
+  }
+
+  async deleteAttrib() {
+    let prompt = await this.alertController.create({
+      header: 'Borrar atributo',
+      message: 'Ingresa el nombre del atributo a eliminar... (si te equivocas siempre puedes regresar a una version anterior)',
+      inputs: [
+        {
+          name: 'nombre_atributo',
+          type: 'text',
+          placeholder: 'Atributo ej. peso'
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancelar',
+          handler: data => {}
+        },
+        {
+          text: 'Borrar',
+          handler: async data => {
+            try {
+              const resp = await this.dataService.deleteAttrib(this.properties.version, data.nombre_atributo).toPromise();
+              // @ts-ignore
+              if (resp.status === 'ok') {
+                // tslint:disable-next-line: deprecation
+                window.location.reload(true);
+                this.presentToast('Borrado con exito');
+              } else {
+                // @ts-ignore
+                this.presentToast(resp.mensaje);
+              }
+            } catch (error) {
+              this.presentToast(error.error.mensaje);
+            }
+          }
+        }
+      ]
+    });
+    await prompt.present();
+  }
+
+  saveSet() {
+    this.fileService.getFile(this.properties.version);
+  }
+
+  goCharts() {
+    this.router.navigateByUrl(`/charts/${this.properties.version}`);
   }
 }

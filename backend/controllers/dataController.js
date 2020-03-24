@@ -32,6 +32,15 @@ exports.getData = async (req, res) => {
   }
 };
 
+const findWithAttr = (array, attr, value) => {
+  for (let i = 0; i < array.length; i += 1) {
+    if (array[i][attr] === value) {
+      return i;
+    }
+  }
+  return -1;
+};
+
 const createDataset = (name, data) => {
   const datasetPath = path.resolve(`files/datasets/${name}`);
   fs.writeFileSync(datasetPath, data);
@@ -285,6 +294,12 @@ exports.deleteAtrib = async (req, res) => {
     );
     // convierte de csv a json
     const jsonData = await csv().fromFile(datasetPath);
+    if (jsonData[0][req.params.nombre] == null) {
+      return res.status(400).json({
+        status: 'fallo',
+        mensaje: 'No existe ese elemento'
+      });
+    }
     // actualizo instancia
     jsonData.forEach(val => {
       delete val[req.params.nombre];
@@ -296,11 +311,14 @@ exports.deleteAtrib = async (req, res) => {
     // creo un nuevo archivo properties
     propertiesFile.version = `${name}.json`;
     propertiesFile.atributos_archivo_creado.splice(
-      propertiesFile.atributos_archivo_creado.find(
-        val => val === req.params.nombre
+      findWithAttr(
+        propertiesFile.atributos_archivo_creado,
+        'nombre_atributo',
+        req.params.nombre
       ),
       1
     );
+    console.log(propertiesFile);
     propertiesFile.nombre_archivo_creado = `${name}.csv`;
     createProperties(propertiesFile);
     // guardo el dataset
@@ -317,3 +335,4 @@ exports.deleteAtrib = async (req, res) => {
     });
   }
 };
+
