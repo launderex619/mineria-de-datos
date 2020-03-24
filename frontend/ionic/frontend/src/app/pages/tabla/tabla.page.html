@@ -16,30 +16,49 @@
         </ion-button>
       </ion-buttons>
     </ion-card-subtitle>
-      <ion-card-title class="ion-padding">
-        Tabla de datos
-        <ion-buttons class="ion-float-right">
-          <ion-button (click)="clickedStar()">
-            <ion-icon color="secondary" name="arrow-down"></ion-icon>Crear Fila
-          </ion-button>
-          <ion-button (click)="clickedStar()">
-            <ion-icon color="secondary" name="arrow-forward"></ion-icon>Crear Columna
-          </ion-button>
-          <ion-button (click)="clickedStar()">
-            <ion-icon color="secondary" name="arrow-back"></ion-icon>Eliminar Columna
-          </ion-button>
-          <ion-button (click)="clickedStar()">
-            <ion-icon color="secondary" name="podium"></ion-icon>Crear Analisis
-          </ion-button>
-          <ion-button (click)="clickedStar()">
-            <ion-icon color="secondary" name="cloud-download"></ion-icon>Guardar set de datos
-          </ion-button>
-        </ion-buttons>
-      </ion-card-title>
+    <ion-card-title class="ion-padding">
+      Tabla de datos
+      <ion-buttons class="ion-float-right">
+        <ion-button (click)="addItem()">
+          <ion-icon color="secondary" name="arrow-down"></ion-icon>Crear Fila
+        </ion-button>
+        <ion-button (click)="clickedStar()">
+          <ion-icon color="secondary" name="arrow-forward"></ion-icon>Crear Columna
+        </ion-button>
+        <ion-button (click)="clickedStar()">
+          <ion-icon color="secondary" name="arrow-back"></ion-icon>Eliminar Columna
+        </ion-button>
+        <ion-button (click)="clickedStar()">
+          <ion-icon color="secondary" name="podium"></ion-icon>Crear Analisis
+        </ion-button>
+        <ion-button (click)="clickedStar()">
+          <ion-icon color="secondary" name="cloud-download"></ion-icon>Guardar set de datos
+        </ion-button>
+      </ion-buttons>
+    </ion-card-title>
     <ion-card-content>
       <div *ngIf='loaded' class="ion-padding">
         <ngx-datatable class="material" [rows]="datasetCopy" [columns]='columns' [columnMode]="force" headerHeight="50"
           footerHeight="50" [scrollbarV]="true" [scrollbarH]="true">
+          <ngx-datatable-column *ngFor="let column of columns; let i = index;" name="{{column.name}}"
+            prop="{{column.prop}}">
+            <ng-template let-value="value" let-row="datasetCopy" ngx-datatable-cell-template>
+              <div *ngIf="column.name === '_id'">
+                <ion-buttons>
+                  <ion-button (click)="askDelete(value)">
+                    <ion-icon color='danger' name="trash"></ion-icon>
+                  </ion-button>
+                  <ion-button (click)="editItem(value)">
+                    <ion-icon color='primary' name="create"></ion-icon>
+                  </ion-button>
+              {{value}}
+                </ion-buttons>
+              </div>
+              <div *ngIf="column.name !== '_id'">
+                {{(value == '')? properties.valor_nulo : value}}
+              </div>
+            </ng-template>
+          </ngx-datatable-column>
         </ngx-datatable>
       </div>
     </ion-card-content>

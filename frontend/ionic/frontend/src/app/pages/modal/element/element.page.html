@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title *ngIf="properties">
+      Elemento
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+
+  <form [formGroup]="elementGroup" (ngSubmit)="createProperties()">
+    <ion-card *ngIf="properties">
+      <ion-grid>
+        <ion-list>
+          Atributos
+          <div formArrayName="elements">
+            <div [formGroupName]="i" *ngFor="let atributo of elementGroup.controls.elements.controls; let i = index">
+              <ion-row>
+                <ion-col>
+                  <ion-item>
+                    <ion-label position="floating">Nombre atributo</ion-label>
+                    <ion-input [value]="" readonly formControlName="name"></ion-input>
+                  </ion-item>
+                </ion-col>
+                <ion-col>
+                  <ion-item>
+                    <ion-label position="floating">Valor</ion-label>
+                    <ion-input color="primary" [value]="" formControlName="value"></ion-input>
+                  </ion-item>
+                </ion-col>
+                <ion-col>
+                  <ion-item>
+                    <ion-label position="floating">RegExp </ion-label>
+                    <ion-input readonly [value]="properties.atributos_archivo_creado[i].expresion_regular"></ion-input>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+            </div>
+          </div>
+          <div>
+            <ion-button [disabled]="elementGroup.invalid" (click)="saveProperties()">
+              <ion-icon color="primary" name="checkmark-circle"></ion-icon> Guardar
+            </ion-button>
+          </div>
+        </ion-list>
+      </ion-grid>
+    </ion-card>
+  </form>
+
+</ion-content>

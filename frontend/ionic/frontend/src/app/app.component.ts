@@ -12,7 +12,7 @@ import { VersionesService } from './services/versiones.service';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent implements OnInit {
-  public selectedIndex = 0;
+  public selectedIndex = 1;
   public version = null;
   public appPages = [
     {

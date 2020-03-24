@@ -11,11 +11,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PropertiesPage } from './pages/modal/properties/properties.page';
+import { ElementPage } from './pages/modal/element/element.page';
 
 @NgModule({
-  declarations: [AppComponent, PropertiesPage],
+  declarations: [AppComponent, PropertiesPage, ElementPage],
   entryComponents: [
-    PropertiesPage
+    PropertiesPage,
+    ElementPage
   ],
   imports: [
     BrowserModule,
