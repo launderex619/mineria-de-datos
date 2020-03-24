@@ -40,7 +40,7 @@
               }
             ],
             "scripts": [
-              "../node_modules/plotly.js/dist/plotly.min.js"
+              "node_modules/plotly.js/dist/plotly.min.js"
             ]
           },
           "configurations": {
@@ -102,7 +102,7 @@
             "karmaConfig": "karma.conf.js",
             "styles": [],
             "scripts": [
-              "../node_modules/plotly.js/dist/plotly.min.js"
+              "node_modules/plotly.js/dist/plotly.min.js"
             ],
             "assets": [
               {

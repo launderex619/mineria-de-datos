@@ -98,7 +98,6 @@ export class ChartsPage implements OnInit {
   }
 
   loadCharts() {
-    console.log(this.properties.atributos_archivo_creado);
     this.properties.atributos_archivo_creado.forEach(item => {
       const element = document.getElementById(item.nombre_atributo);
       // @ts-ignore
@@ -138,9 +137,6 @@ export class ChartsPage implements OnInit {
         boxpoints: 'all'
       });
     }
-    const style = {
-      margin: { t: 0}
-    };
     return chart;
   }
 }
