@@ -6,13 +6,25 @@
 <ion-content>
 
   <ion-card>
-    <ion-grid>
-      <ion-row>
+    <ion-grid *ngIf="properties">
+      <ion-row class="ion-padding" *ngFor="let atrib of properties.atributos_archivo_creado">
         <ion-col>
-          <div #chart></div>
+          <ion-card>
+            <div class="chart" id="{{atrib.nombre_atributo}}"></div>
+          </ion-card>
         </ion-col>
         <ion-col>
-          dsadsd
+          <ion-card>
+            <ion-card-title class="ion-padding">
+              Nombre del atributo: <strong>{{atrib.nombre_atributo}}</strong>
+            </ion-card-title>
+            <ion-card-title class="ion-padding">
+              Tipo de dato: <strong>{{atrib.tipo_de_dato}}</strong>
+            </ion-card-title>
+            <ion-card-title class="ion-padding">
+              Expresion regular: <strong>{{atrib.expresion_regular}}</strong>
+            </ion-card-title>
+          </ion-card>
         </ion-col>
       </ion-row>
     </ion-grid>

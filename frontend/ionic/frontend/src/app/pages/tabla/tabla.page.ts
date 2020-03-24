@@ -77,7 +77,8 @@ export class TablaPage implements OnInit {
           element._id = index;
         });
         if (this.dataset.length > 500) {
-          this.presentToast('Por temas de performance, solo se mostraran los primeros 500 elementos');
+          this.presentToast('Por temas de performance, solo se mostraran los primeros 500 elementos, numero de elementos: ' +
+            this.dataset.length);
           for (let i = 0; i < 500; i++) {
             this.datasetCopy.push(this.dataset[i]);
           }
@@ -168,7 +169,7 @@ export class TablaPage implements OnInit {
   }
 
   async addAtribb() {
-    let prompt = await this.alertController.create({
+    const prompt = await this.alertController.create({
       header: 'Crear Atributo',
       message:
         'Ingresa el nombre del nuevo atributo a generar, posteriormente el valor' +
@@ -228,7 +229,7 @@ export class TablaPage implements OnInit {
   }
 
   async deleteAttrib() {
-    let prompt = await this.alertController.create({
+    const prompt = await this.alertController.create({
       header: 'Borrar atributo',
       message: 'Ingresa el nombre del atributo a eliminar... (si te equivocas siempre puedes regresar a una version anterior)',
       inputs: [
@@ -272,6 +273,6 @@ export class TablaPage implements OnInit {
   }
 
   goCharts() {
-    this.router.navigateByUrl(`/charts/${this.properties.version}`);
+    this.router.navigateByUrl(`/graficos/${this.properties.version}`);
   }
 }

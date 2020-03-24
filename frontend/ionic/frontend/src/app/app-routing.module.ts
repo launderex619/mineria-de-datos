@@ -20,7 +20,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/configuration/configuration.module').then( m => m.ConfigurationPageModule)
   },
   {
-    path: 'charts/:version',
+    path: 'graficos/:version',
     loadChildren: () => import('./pages/charts/charts.module').then( m => m.ChartsPageModule)
   }
 ];

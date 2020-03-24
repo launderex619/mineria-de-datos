@@ -29,6 +29,11 @@ export class AppComponent implements OnInit {
       title: 'Configuracion',
       url: '/configuracion',
       icon: 'settings'
+    },
+    {
+      title: 'Graficos',
+      url: '/graficos',
+      icon: 'settings'
     }
   ];
   public labels = ['Carlos Carvajal Vazquez', 'Jose Israel Flores Campos', 'Eduardo Guerra Alvarez'];
@@ -61,6 +66,7 @@ export class AppComponent implements OnInit {
         this.version = actualVersion.version;
         this.appPages[0].url = this.appPages[0].url + '/' + this.version;
         this.appPages[2].url = this.appPages[2].url + '/' + this.version;
+        this.appPages[3].url = this.appPages[3].url + '/' + this.version;
       }
       // @ts-ignore
       if (allVersions.status === 'ok') {
@@ -77,6 +83,7 @@ export class AppComponent implements OnInit {
     this.version = name;
     this.appPages[0].url = 'tabla/' + this.version;
     this.appPages[2].url = 'configuracion/' + this.version;
+    this.appPages[2].url = 'graficos/' + this.version;
     console.log(this.version);
   }
 
