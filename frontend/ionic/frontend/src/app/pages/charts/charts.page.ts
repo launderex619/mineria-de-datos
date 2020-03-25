@@ -106,6 +106,7 @@ export class ChartsPage implements OnInit {
     this.dataset.forEach(element => {
       data.push(element[attribName]);
     });
+    console.log(data);
     const variables = {
       missing_instances_number: this.getMissingInstancesNumber(data),
       missing_instances_list: this.getMissingInstancesString(data),
@@ -227,7 +228,7 @@ export class ChartsPage implements OnInit {
     return data.sort((a, b) => data.filter(v => v === a).length - data.filter(v => v === b).length).pop();
   }
   getPearson(pearsonA: any[], pearsonB: any[]) {
-    // Variables
+    // variables
     let mediaA = 0;
     let mediaB = 0;
     let sumatoriaA = 0;
@@ -237,7 +238,7 @@ export class ChartsPage implements OnInit {
     let q2 = 0;
     let nq1q2 = 0;
     const n = pearsonA.length;
-    let resultado = 0;
+    const resultado = 0;
 
     // Sacar media de A
     for (let i = 0; i < n; i++) {
@@ -276,13 +277,13 @@ export class ChartsPage implements OnInit {
     console.log('q1', q1);
     console.log('q2', q2);
     console.log('n', n);
-    console.log('Dato',nq1q2);
+    console.log('Dato', nq1q2);
     console.log('resultado', resultado);
     // Resultado Pearson rAB
-    return '' + (sumatoriaA / nq1q2);
+    return '' + sumatoriaA / nq1q2;
   }
-  getChiSquare(data: any[], dataType: any) {
-    // pendiente
+  getChiSquare(A: any[], B: any) {
+    return 'No implementado :c';
   }
 
   async showList(message) {
@@ -353,6 +354,10 @@ export class ChartsPage implements OnInit {
                         data2.push(+element[val2]);
                       }
                     });
+                    if (data1.length !== data2.length) {
+                      this.presentToast('Los datos a comparar muestran una discrepancia en la cantidad de datos');
+                      return;
+                    }
                     const alert3 = await this.alertController.create({
                       header: 'Resultado',
                       message: this.getPearson(data1, data2),
@@ -417,7 +422,28 @@ export class ChartsPage implements OnInit {
                 {
                   text: 'Ok',
                   handler: async val2 => {
-                    
+                    console.log(val);
+                    const data1 = [];
+                    const data2 = [];
+                    // tslint:disable-next-line: no-shadowed-variable
+                    this.dataset.forEach(element => {
+                      if (element[val] !== '' && element[val] !== this.properties.valor_nulo) {
+                        data1.push(element[val]);
+                      }
+                      if (element[val2] !== '' && element[val2] !== this.properties.valor_nulo) {
+                        data2.push(element[val2]);
+                      }
+                    });
+                    if (data1.length !== data2.length) {
+                      this.presentToast('Los datos a comparar muestran una discrepancia en la cantidad de datos');
+                      return;
+                    }
+                    const alert3 = await this.alertController.create({
+                      header: 'Resultado',
+                      message: this.getChiSquare(data1, data2),
+                      buttons: ['OK']
+                    });
+                    await alert3.present();
                   }
                 }
               ]
