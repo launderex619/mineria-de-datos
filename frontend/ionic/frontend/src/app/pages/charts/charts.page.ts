@@ -126,20 +126,11 @@ export class ChartsPage implements OnInit {
         type: 'box',
         boxpoints: 'all'
       });
-    } else if (dataType === 'Texto') {
+    } else {
       chart.push({
         y: data,
         name: attribName,
         type: 'histogram'
-      });
-    } else {
-      chart.push({
-        y: [1, 1, 1, 1, 1, 1, 12, 3, 3, 3, 5],
-        name: attribName,
-        jitter: 0.3,
-        pointpos: -1.8,
-        type: 'box',
-        boxpoints: 'all'
       });
     }
     return chart;
