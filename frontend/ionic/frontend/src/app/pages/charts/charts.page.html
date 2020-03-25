@@ -7,7 +7,7 @@
 
   <ion-card>
     <ion-grid *ngIf="properties">
-      <ion-row class="ion-padding" *ngFor="let atrib of properties.atributos_archivo_creado">
+      <ion-row class="ion-padding" *ngFor="let atrib of properties.atributos_archivo_creado; let i = index">
         <ion-col>
           <ion-card>
             <div class="chart" id="{{atrib.nombre_atributo}}"></div>
@@ -24,10 +24,43 @@
             <ion-card-title class="ion-padding">
               Expresion regular: <strong>{{atrib.expresion_regular}}</strong>
             </ion-card-title>
+            <ion-card-title *ngIf="stadistics[i]" class="ion-padding">
+              Valores faltantes: <strong>{{stadistics[i].missing_instances_number}}</strong>
+            </ion-card-title>
+            <ion-card-title *ngIf="stadistics[i]" class="ion-padding">
+              <div *ngIf="stadistics[i].missing_instances_list">
+                Valores faltantes: <ion-button (click)="showList(stadistics[i].missing_instances_list)">Mostrar lista
+                </ion-button>
+              </div>
+            </ion-card-title>
+            <ion-card-title *ngIf="stadistics[i]" class="ion-padding">
+              Valores fuera del dominio: <strong>{{stadistics[i].instances_out_domain_number}}</strong>
+            </ion-card-title>
+            <ion-card-title *ngIf="stadistics[i]" class="ion-padding">
+              <div *ngIf="stadistics[i].instances_out_domain_list">
+                Valores faltantes: <ion-button (click)="showList(stadistics[i].instances_out_domain_list)">Mostrar lista
+                </ion-button>
+              </div>
+            </ion-card-title>
+            <ion-card-title *ngIf="stadistics[i]" class="ion-padding">
+              <div *ngIf="stadistics[i].average">
+                Media: <strong>{{stadistics[i].average}}</strong>
+              </div>
+            </ion-card-title>
+            <ion-card-title *ngIf="stadistics[i]" class="ion-padding">
+              <div *ngIf="stadistics[i].median">
+                Mediana: <strong>{{stadistics[i].median}}</strong>
+              </div>
+            </ion-card-title>
+            <ion-card-title *ngIf="stadistics[i]" class="ion-padding">
+              <div *ngIf="stadistics[i].mode">
+                Moda: <strong>{{stadistics[i].mode}}</strong>
+              </div>
+            </ion-card-title>
           </ion-card>
         </ion-col>
       </ion-row>
     </ion-grid>
   </ion-card>
-  
+
 </ion-content>
