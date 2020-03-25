@@ -29,14 +29,16 @@ export class TablaPage implements OnInit {
     private toastController: ToastController,
     private alertController: AlertController,
     private fileService: FileService
-  ) {
-    const version = this.route.snapshot.paramMap.get('version');
-    this.nameDataset = version;
-    this.getProperties(version);
-    this.getData(version);
-  }
+  ) { }
 
   ngOnInit() {}
+
+  async ionViewDidEnter() {
+    const version = this.route.snapshot.paramMap.get('version');
+    this.nameDataset = version;
+    await this.getProperties(version);
+    await this.getData(version);
+  }
 
   async getProperties(version) {
     try {
@@ -66,6 +68,10 @@ export class TablaPage implements OnInit {
   }
 
   async getData(version) {
+    if (this.properties.nombre_archivo_creado == null) {
+      this.presentToast('Esta version no tiene un dataset asociado');
+      return;
+    }
     try {
       const resp = await this.dataService.getData(version).toPromise();
       // @ts-ignore

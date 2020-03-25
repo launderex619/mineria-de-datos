@@ -33,7 +33,7 @@ export class AppComponent implements OnInit {
     {
       title: 'Graficos',
       url: '/graficos',
-      icon: 'settings'
+      icon: 'podium'
     }
   ];
   public labels = ['Carlos Carvajal Vazquez', 'Jose Israel Flores Campos', 'Eduardo Guerra Alvarez'];

@@ -1,6 +1,12 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>charts</ion-title>
+    <ion-title>
+      Graficas
+      <ion-buttons class="ion-float-right">
+        <ion-button color="secondary" (click)="startPearson()">Comparar con Pearson</ion-button>
+        <ion-button color="secondary" (click)="startChi()">Comparar con Chi-cuadrada</ion-button>
+      </ion-buttons>
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content>

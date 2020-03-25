@@ -6,6 +6,7 @@ import { ModalController, ToastController, AlertController } from '@ionic/angula
 import { FileService } from 'src/app/services/file.service';
 import * as _ from 'lodash';
 import { element } from 'protractor';
+import { async } from '@angular/core/testing';
 
 @Component({
   selector: 'app-charts',
@@ -158,7 +159,7 @@ export class ChartsPage implements OnInit {
     // tslint:disable-next-line: no-shadowed-variable
     data.forEach((element, index) => {
       if (element === this.properties.valor_nulo || element === '') {
-        list += `Elemento faltante: ${index} <br>`;
+        list += `Elemento faltante: <br>${element} <br><br>`;
       }
     });
     return list;
@@ -180,7 +181,7 @@ export class ChartsPage implements OnInit {
     // tslint:disable-next-line: no-shadowed-variable
     data.forEach((element: string, index) => {
       if (!regExp.test(element)) {
-        list += `Elemento faltante: ${index} <br>`;
+        list += `Elemento faltante: <br>${element} <br><br>`;
       }
     });
     return list;
@@ -234,8 +235,60 @@ export class ChartsPage implements OnInit {
     });
     return data.sort((a, b) => data.filter(v => v === a).length - data.filter(v => v === b).length).pop();
   }
-  getPearson(data: any[], dataType: any) {
-    // pendiente
+  getPearson(pearsonA: any[], pearsonB: any[]) {
+    // Variables
+    let mediaA = 0;
+    let mediaB = 0;
+    let sumatoriaA = 0;
+    let sumatoriaB = 0;
+    let multiplicacion = 0;
+    let q1 = 0;
+    let q2 = 0;
+    let nq1q2 = 0;
+    const n = pearsonA.length;
+    let resultado = 0;
+
+    // Sacar media de A
+    for (let i = 0; i < n; i++) {
+      mediaA = mediaA + pearsonA[i];
+    }
+    mediaA = mediaA / n;
+    // Sacar media de B
+    for (let i = 0; i < n; i++) {
+      mediaB = mediaB + pearsonB[i];
+    }
+    mediaB = mediaB / n;
+    // Sacar la sumatoria
+    for (let i = 0; i < n; i++) {
+      multiplicacion = (pearsonA[i] - mediaA) * (pearsonB[i] - mediaB);
+      sumatoriaA = sumatoriaA + multiplicacion;
+    }
+    multiplicacion = 0;
+    // Sacar cuartil 1
+    for (let i = 0; i < n; i++) {
+      multiplicacion = Math.pow(pearsonA[i] - mediaA, 2);
+      sumatoriaB = sumatoriaB + multiplicacion;
+    }
+    q1 = Math.sqrt(sumatoriaB / n);
+    sumatoriaB = 0;
+    multiplicacion = 0;
+
+    // Sacar cuartil 2
+    for (let i = 0; i < n; i++) {
+      multiplicacion = Math.pow(pearsonB[i] - mediaB, 2);
+      sumatoriaB = sumatoriaB + multiplicacion;
+    }
+    q2 = Math.sqrt(sumatoriaB / n);
+
+    // Multiplicacion cuartil 1 y 2 por n
+    nq1q2 = q1 * q2 * n;
+    console.log('q1', q1);
+    console.log('q2', q2);
+    console.log('n', n);
+    console.log('Dato',nq1q2);
+    console.log('resultado', resultado);
+    // Resultado Pearson rAB
+    return '' + (sumatoriaA / nq1q2);
   }
   getChiSquare(data: any[], dataType: any) {
     // pendiente
@@ -249,5 +302,140 @@ export class ChartsPage implements OnInit {
     });
 
     await alert.present();
+  }
+
+  async startPearson() {
+    const inputs = [];
+    // tslint:disable-next-line: no-shadowed-variable
+    this.properties.atributos_archivo_creado.forEach(element => {
+      if (element.tipo_de_dato === 'Numerico') {
+        inputs.push({
+          name: element.nombre_atributo,
+          type: 'radio',
+          label: element.nombre_atributo,
+          value: element.nombre_atributo,
+          checked: false
+        });
+      }
+    });
+    if (inputs.length < 2) {
+      this.presentToast('No hay suficientes atributos para comparar');
+      return;
+    }
+    const alert = await this.alertController.create({
+      header: 'Valor 1',
+      inputs,
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {}
+        },
+        {
+          text: 'Ok',
+          handler: async val => {
+            const alert2 = await this.alertController.create({
+              header: 'Valor 2',
+              inputs,
+              buttons: [
+                {
+                  text: 'Cancel',
+                  role: 'cancel',
+                  cssClass: 'secondary',
+                  handler: () => {
+                    console.log('Confirm Cancel');
+                  }
+                },
+                {
+                  text: 'Ok',
+                  handler: async val2 => {
+                    console.log(val);
+                    const data1 = [];
+                    const data2 = [];
+                    // tslint:disable-next-line: no-shadowed-variable
+                    this.dataset.forEach(element => {
+                      if (element[val] !== '' && element[val] !== this.properties.valor_nulo) {
+                        data1.push(+element[val]);
+                      }
+                      if (element[val2] !== '' && element[val2] !== this.properties.valor_nulo) {
+                        data2.push(+element[val2]);
+                      }
+                    });
+                    const alert3 = await this.alertController.create({
+                      header: 'Resultado',
+                      message: this.getPearson(data1, data2),
+                      buttons: ['OK']
+                    });
+                    await alert3.present();
+                  }
+                }
+              ]
+            });
+            await alert2.present();
+          }
+        }
+      ]
+    });
+    alert.present();
+  }
+
+  async startChi() {
+    const inputs = [];
+    // tslint:disable-next-line: no-shadowed-variable
+    this.properties.atributos_archivo_creado.forEach(element => {
+      if (element.tipo_de_dato !== 'Numerico') {
+        inputs.push({
+          name: element.nombre_atributo,
+          type: 'radio',
+          label: element.nombre_atributo,
+          value: element.nombre_atributo,
+          checked: false
+        });
+      }
+    });
+    if (inputs.length < 2) {
+      this.presentToast('No hay suficientes atributos para comparar');
+      return;
+    }
+    const alert = await this.alertController.create({
+      header: 'Valor 1',
+      inputs,
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {}
+        },
+        {
+          text: 'Ok',
+          handler: async val => {
+            const alert2 = await this.alertController.create({
+              header: 'Valor 2',
+              inputs,
+              buttons: [
+                {
+                  text: 'Cancel',
+                  role: 'cancel',
+                  cssClass: 'secondary',
+                  handler: () => {
+                    console.log('Confirm Cancel');
+                  }
+                },
+                {
+                  text: 'Ok',
+                  handler: async val2 => {
+                    
+                  }
+                }
+              ]
+            });
+            await alert2.present();
+          }
+        }
+      ]
+    });
+    alert.present();
   }
 }
