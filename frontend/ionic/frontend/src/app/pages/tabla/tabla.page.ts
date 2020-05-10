@@ -110,7 +110,6 @@ export class TablaPage implements OnInit {
   }
 
   async askDelete(index) {
-    console.log(index);
     const alert = await this.alertController.create({
       header: 'Eliminar',
       message: 'Estas seguro?',
@@ -174,7 +173,7 @@ export class TablaPage implements OnInit {
     return await modal.present();
   }
 
-  async addAtribb() {
+  async addAttrib() {
     const prompt = await this.alertController.create({
       header: 'Crear Atributo',
       message:

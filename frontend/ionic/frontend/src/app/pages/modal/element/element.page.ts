@@ -82,7 +82,6 @@ export class ElementPage implements OnInit {
   }
 
   removeControl(index) {
-    console.log(index);
     const control = this.elementGroup.controls.elements as FormArray;
     control.removeAt(index);
   }
@@ -92,7 +91,6 @@ export class ElementPage implements OnInit {
     this.elementGroup.value.elements.forEach((element, index) => {
       object[element.name] = element.value;
     });
-    console.log(object, this.elementGroup.value);
     let resp;
     if (this.isNew) {
       resp = await this.dataService.addItem(this.properties.version, object).toPromise();

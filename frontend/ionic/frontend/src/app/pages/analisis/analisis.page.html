@@ -1,0 +1,113 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Menu de analisis</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-card class="ion-padding ion-text-center">
+          <ion-card-title>
+            Target: {{target.nombre_atributo}}
+          </ion-card-title>
+          <ion-card-content>
+            Tipo: {{target.tipo_de_dato}}
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-card class="ion-padding ion-text-center">
+          <ion-card-title>
+            Metodologías de validación.
+          </ion-card-title>
+          <ion-card-content>
+            <ion-list>
+              <ion-radio-group value="hold-out">
+                <ion-list-header>
+                  <ion-label>Selecciona la metodologia</ion-label>
+                </ion-list-header>
+                <ion-item (click)="muestraLog('hold-out')">
+                  <ion-label>Hold-out</ion-label>
+                  <ion-radio slot="start" value="hold-out"></ion-radio>
+                </ion-item>
+                <ion-item (click)="muestraLog('k-fold-cross-validation')">
+                  <ion-label>K-Fold cross-validation</ion-label>
+                  <ion-radio slot="start" value="k-fold-cross-validation"></ion-radio>
+                </ion-item>
+              </ion-radio-group>
+            </ion-list>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-card class="ion-padding ion-text-center" (click)="showProperties()">
+          <ion-card-title>
+            Zero-R
+          </ion-card-title>
+          <ion-card-content >
+            <ion-avatar>
+              <img src="./../../../assets/settings.png">
+            </ion-avatar>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card class="ion-padding ion-text-center" (click)="createProperties()">
+          <ion-card-title >
+            One-R
+          </ion-card-title>
+          <ion-card-content >
+            <ion-avatar>
+              <img src="./../../../assets/settings.png">
+            </ion-avatar>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card class="ion-padding ion-text-center" (click)="createProperties()">
+          <ion-card-title >
+            Naive-Bayes
+          </ion-card-title>
+          <ion-card-content >
+            <ion-avatar>
+              <img src="./../../../assets/settings.png">
+            </ion-avatar>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-card class="ion-padding ion-text-center" (click)="showProperties()">
+          <ion-card-title>
+            K-Means
+          </ion-card-title>
+          <ion-card-content >
+            <ion-avatar>
+              <img src="./../../../assets/settings.png">
+            </ion-avatar>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card class="ion-padding ion-text-center" (click)="createProperties()">
+          <ion-card-title >
+            K-NN
+          </ion-card-title>
+          <ion-card-content >
+            <ion-avatar>
+              <img src="./../../../assets/settings.png">
+            </ion-avatar>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

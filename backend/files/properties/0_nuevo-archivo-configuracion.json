@@ -1,1 +1,108 @@
-{"descripcion":"Archivo properties de un archivo custom","version":"24_nuevo-archivo-configuracion.json","mongo":false,"nombre_base_de_datos":null,"tablas_base_de_datos":null,"atributos_base_de_datos":null,"atributos_archivo_creado":[{"nombre_atributo":"Name","tipo_de_dato":"Texto","target":false,"expresion_regular":"[\\w| ]*"},{"nombre_atributo":"Platform","tipo_de_dato":"Categorico","target":false,"expresion_regular":"[\\w| ]*"},{"nombre_atributo":"Year_of_Release","tipo_de_dato":"Numerico","target":false,"expresion_regular":"[\\d|\\.]*"},{"nombre_atributo":"Genre","tipo_de_dato":"Categorico","target":false,"expresion_regular":"[\\w| ]*"},{"nombre_atributo":"Publisher","tipo_de_dato":"Categorico","target":false,"expresion_regular":"[\\w| ]*"},{"nombre_atributo":"NA_Sales","tipo_de_dato":"Numerico","target":false,"expresion_regular":"[\\d|\\.]*"},{"nombre_atributo":"EU_Sales","tipo_de_dato":"Numerico","target":false,"expresion_regular":"[\\d|\\.]*"},{"nombre_atributo":"JP_Sales","tipo_de_dato":"Numerico","target":false,"expresion_regular":"[\\d|\\.]*"},{"nombre_atributo":"Other_Sales","tipo_de_dato":"Numerico","target":false,"expresion_regular":"[\\d|\\.]*"},{"nombre_atributo":"Global_Sales","tipo_de_dato":"Numerico","target":false,"expresion_regular":"[\\d|\\.]*"},{"nombre_atributo":"Critic_Score","tipo_de_dato":"Numerico","target":false,"expresion_regular":"[\\d|\\.]*"},{"nombre_atributo":"Critic_Count","tipo_de_dato":"Numerico","target":false,"expresion_regular":"[\\d|\\.]*"},{"nombre_atributo":"User_Score","tipo_de_dato":"Numerico","target":false,"expresion_regular":"[\\d|\\.]*"},{"nombre_atributo":"User_Count","tipo_de_dato":"Numerico","target":false,"expresion_regular":"[\\d|\\.]*"},{"nombre_atributo":"Developer","tipo_de_dato":"Categorico","target":false,"expresion_regular":"[\\w| ]*"},{"nombre_atributo":"Rating","tipo_de_dato":"Categorico","target":false,"expresion_regular":"[\\w| ]*"}],"nombre_archivo_creado":"Video_Games_Sales_as_at_22_Dec_2016.csv","valor_nulo":"?"}
+{
+    "descripcion": "Archivo properties de un archivo custom",
+    "version": "0_nuevo-archivo-configuracion.json",
+    "mongo": false,
+    "nombre_base_de_datos": null,
+    "tablas_base_de_datos": null,
+    "atributos_base_de_datos": null,
+    "atributos_archivo_creado": [
+        {
+            "nombre_atributo": "Name",
+            "tipo_de_dato": "Texto",
+            "target": false,
+            "expresion_regular": "[\\w| ]*"
+        },
+        {
+            "nombre_atributo": "Platform",
+            "tipo_de_dato": "Categorico",
+            "target": false,
+            "expresion_regular": "[\\w| ]*"
+        },
+        {
+            "nombre_atributo": "Year_of_Release",
+            "tipo_de_dato": "Numerico",
+            "target": false,
+            "expresion_regular": "[\\d|\\.]*"
+        },
+        {
+            "nombre_atributo": "Genre",
+            "tipo_de_dato": "Categorico",
+            "target": false,
+            "expresion_regular": "[\\w| ]*"
+        },
+        {
+            "nombre_atributo": "Publisher",
+            "tipo_de_dato": "Categorico",
+            "target": false,
+            "expresion_regular": "[\\w| ]*"
+        },
+        {
+            "nombre_atributo": "NA_Sales",
+            "tipo_de_dato": "Numerico",
+            "target": false,
+            "expresion_regular": "[\\d|\\.]*"
+        },
+        {
+            "nombre_atributo": "EU_Sales",
+            "tipo_de_dato": "Numerico",
+            "target": false,
+            "expresion_regular": "[\\d|\\.]*"
+        },
+        {
+            "nombre_atributo": "JP_Sales",
+            "tipo_de_dato": "Numerico",
+            "target": false,
+            "expresion_regular": "[\\d|\\.]*"
+        },
+        {
+            "nombre_atributo": "Other_Sales",
+            "tipo_de_dato": "Numerico",
+            "target": false,
+            "expresion_regular": "[\\d|\\.]*"
+        },
+        {
+            "nombre_atributo": "Global_Sales",
+            "tipo_de_dato": "Numerico",
+            "target": false,
+            "expresion_regular": "[\\d|\\.]*"
+        },
+        {
+            "nombre_atributo": "Critic_Score",
+            "tipo_de_dato": "Numerico",
+            "target": false,
+            "expresion_regular": "[\\d|\\.]*"
+        },
+        {
+            "nombre_atributo": "Critic_Count",
+            "tipo_de_dato": "Numerico",
+            "target": false,
+            "expresion_regular": "[\\d|\\.]*"
+        },
+        {
+            "nombre_atributo": "User_Score",
+            "tipo_de_dato": "Numerico",
+            "target": false,
+            "expresion_regular": "[\\d|\\.]*"
+        },
+        {
+            "nombre_atributo": "User_Count",
+            "tipo_de_dato": "Numerico",
+            "target": false,
+            "expresion_regular": "[\\d|\\.]*"
+        },
+        {
+            "nombre_atributo": "Developer",
+            "tipo_de_dato": "Categorico",
+            "target": false,
+            "expresion_regular": "[\\w| ]*"
+        },
+        {
+            "nombre_atributo": "Rating",
+            "tipo_de_dato": "Categorico",
+            "target": true,
+            "expresion_regular": "[\\w| ]*"
+        }
+    ],
+    "nombre_archivo_creado": "Video_Games_Sales_as_at_22_Dec_2016.csv",
+    "valor_nulo": "?"
+}

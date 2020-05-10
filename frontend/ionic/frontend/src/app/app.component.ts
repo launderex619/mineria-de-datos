@@ -12,7 +12,7 @@ import { VersionesService } from './services/versiones.service';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent implements OnInit {
-  public selectedIndex = 1;
+  public selectedIndex = 0;
   public version = null;
   public appPages = [
     {
@@ -34,6 +34,11 @@ export class AppComponent implements OnInit {
       title: 'Graficos',
       url: '/graficos',
       icon: 'podium'
+    },
+    {
+      title: 'Analisis',
+      url: '/analisis',
+      icon: 'flask'
     }
   ];
   public labels = ['Carlos Carvajal Vazquez', 'Jose Israel Flores Campos', 'Eduardo Guerra Alvarez'];
@@ -45,8 +50,7 @@ export class AppComponent implements OnInit {
     private statusBar: StatusBar,
     private versiones: VersionesService
   ) {
-    this.initializeApp();
-    this.getInfo();
+
   }
 
   initializeApp() {
@@ -67,6 +71,8 @@ export class AppComponent implements OnInit {
         this.appPages[0].url = this.appPages[0].url + '/' + this.version;
         this.appPages[2].url = this.appPages[2].url + '/' + this.version;
         this.appPages[3].url = this.appPages[3].url + '/' + this.version;
+        this.appPages[4].url = this.appPages[4].url + '/' + this.version;
+
       }
       // @ts-ignore
       if (allVersions.status === 'ok') {
@@ -79,16 +85,17 @@ export class AppComponent implements OnInit {
   }
 
   changeVersion(name) {
-    console.log(name);
     this.version = name;
     this.appPages[0].url = 'tabla/' + this.version;
     this.appPages[2].url = 'configuracion/' + this.version;
-    this.appPages[2].url = 'graficos/' + this.version;
-    console.log(this.version);
+    this.appPages[3].url = 'graficos/' + this.version;
+    this.appPages[4].url = 'analisis/' + this.version;
   }
 
   ngOnInit() {
-    const path = window.location.pathname.split('folder/')[1];
+    this.initializeApp();
+    this.getInfo();
+    const path = window.location.pathname.split('folder/')[0];
     if (path !== undefined) {
       this.selectedIndex = this.appPages.findIndex(page => page.title.toLowerCase() === path.toLowerCase());
     }

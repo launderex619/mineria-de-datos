@@ -16,7 +16,6 @@ export class FileService {
   }
 
   submitFile( version, file ) {
-    console.log(version, file);
     return this.http.post(`${this.API_URL}/${version}`, file).pipe(
       map( resp => {
         return resp;

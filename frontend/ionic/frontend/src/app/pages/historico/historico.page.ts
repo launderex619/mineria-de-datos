@@ -68,7 +68,6 @@ export class HistoricoPage implements OnInit {
                 const formData = new FormData();
                 formData.append('archivo', file);
                 const resp = await this.fileService.submitFile(version, formData).toPromise();
-                console.log(resp);
                 // @ts-ignore
                 if (resp.status === 'ok') {
                   // tslint:disable-next-line: deprecation

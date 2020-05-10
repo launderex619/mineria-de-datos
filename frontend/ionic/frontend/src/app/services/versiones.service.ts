@@ -28,7 +28,6 @@ export class VersionesService {
   }
 
   getActualVersion() {
-    console.log(`${this.API_URL}/actual`);
     return this.http.get(`${this.API_URL}/actual`).pipe(
       map( resp => {
         return resp;

@@ -106,7 +106,6 @@ export class ChartsPage implements OnInit {
     this.dataset.forEach(element => {
       data.push(element[attribName]);
     });
-    console.log(data);
     const variables = {
       missing_instances_number: this.getMissingInstancesNumber(data),
       missing_instances_list: this.getMissingInstancesString(data),
@@ -274,11 +273,6 @@ export class ChartsPage implements OnInit {
 
     // Multiplicacion cuartil 1 y 2 por n
     nq1q2 = q1 * q2 * n;
-    console.log('q1', q1);
-    console.log('q2', q2);
-    console.log('n', n);
-    console.log('Dato', nq1q2);
-    console.log('resultado', resultado);
     // Resultado Pearson rAB
     return '' + sumatoriaA / nq1q2;
   }
@@ -422,7 +416,6 @@ export class ChartsPage implements OnInit {
                 {
                   text: 'Ok',
                   handler: async val2 => {
-                    console.log(val);
                     const data1 = [];
                     const data2 = [];
                     // tslint:disable-next-line: no-shadowed-variable

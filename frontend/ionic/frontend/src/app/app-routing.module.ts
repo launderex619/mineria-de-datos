@@ -22,6 +22,10 @@ const routes: Routes = [
   {
     path: 'graficos/:version',
     loadChildren: () => import('./pages/charts/charts.module').then( m => m.ChartsPageModule)
+  },
+  {
+    path: 'analisis/:version',
+    loadChildren: () => import('./pages/analisis/analisis.module').then( m => m.AnalisisPageModule)
   }
 ];
 

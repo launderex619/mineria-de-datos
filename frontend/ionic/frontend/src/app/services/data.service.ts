@@ -38,7 +38,6 @@ export class DataService {
   }
 
   addAttrib(version, object) {
-    console.log(object);
     return this.http.post(`${this.API_URL}/${version}/atributo`, {
       atributo: object.atributo,
       valor: object.valor

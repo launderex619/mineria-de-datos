@@ -22,7 +22,6 @@ export class PropertiesPage implements OnInit {
   ) {
     this.properties = this.navParams.get('properties');
     this.createNew = this.navParams.get('isEditing');
-    console.log(this.properties);
     this.propertiesGroup = this.form.group({
       descripcion: [this.properties.descripcion, Validators.required],
       mongo: [false],
@@ -69,13 +68,11 @@ export class PropertiesPage implements OnInit {
   }
 
   removeControl(index) {
-    console.log(index);
     const control = this.propertiesGroup.controls.atributos_archivo_creado as FormArray;
     control.removeAt(index);
   }
 
   async saveProperties() {
-    console.log(this.propertiesGroup);
     let resp;
     if ( this.createNew ) {
       resp = await this.propertiesService.createProperties(this.propertiesGroup.value).toPromise();
