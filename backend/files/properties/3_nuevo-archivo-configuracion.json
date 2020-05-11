@@ -1,6 +1,6 @@
 {
     "descripcion": "Archivo properties de un archivo custom",
-    "version": "2_nuevo-archivo-configuracion.json",
+    "version": "3_nuevo-archivo-configuracion.json",
     "mongo": false,
     "nombre_base_de_datos": null,
     "tablas_base_de_datos": null,
@@ -82,9 +82,9 @@
             "nombre_atributo": "salary",
             "tipo_de_dato": "Categorico",
             "target": true,
-            "expresion_regular": "[200's_k|300's_k|400's_k|500's_k|600's_k|700's_k|800's_k|900's_k]"
+            "expresion_regular": "[0's_k|200's_k|300's_k|400's_k|500's_k|600's_k|700's_k|800's_k|900's_k]"
         }
     ],
-    "nombre_archivo_creado": "Placement_Data_Full_Class_Categorico.csv",
+    "nombre_archivo_creado": "Placement_Data_Full_Class_Categorico_lleno.csv",
     "valor_nulo": "?"
 }
