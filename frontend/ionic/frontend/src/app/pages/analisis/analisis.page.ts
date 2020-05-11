@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PropertiesService } from 'src/app/services/properties.service';
 import { DataService } from 'src/app/services/data.service';
-import { ToastController } from '@ionic/angular';
+import { ToastController, ModalController } from '@ionic/angular';
+import { ZeroRPage } from './zero-r/zero-r.page';
+import { OneRPage } from './one-r/one-r.page';
+import { NaiveBayesPage } from './naive-bayes/naive-bayes.page';
 
 @Component({
   selector: 'app-analisis',
@@ -16,8 +19,14 @@ export class AnalisisPage implements OnInit {
     nombre_atributo: '',
     tipo_de_dato: ''
   };
-  constructor(private route: ActivatedRoute, private propertiesSerive: PropertiesService,
-              private toastController: ToastController, private dataService: DataService) {}
+  kFoldCrossValidationValue = 0;
+  holdOutValue = 0;
+  selectedValidationMethod = 'holdOut';
+  constructor(private route: ActivatedRoute,
+              private propertiesSerive: PropertiesService,
+              private toastController: ToastController,
+              private modalController: ModalController,
+              private dataService: DataService) {}
 
   ngOnInit() {}
   ionViewDidEnter() {
@@ -77,6 +86,55 @@ export class AnalisisPage implements OnInit {
     }
   }
 
+  getComponentProps() {
+    const validationMethodValue = (this.selectedValidationMethod === 'holdOut') ? this.holdOutValue : this.kFoldCrossValidationValue;
+    return {
+      settings: {
+        target: this.target.nombre_atributo,
+        targetType: this.target.tipo_de_dato,
+        validationMethod: this.selectedValidationMethod,
+        validationMethodValue,
+        dataset: this.dataset,
+        properties: this.properties
+      }
+    }
+  }
+
+  async showZeroR() {
+    const modal = await this.modalController.create({
+      component: ZeroRPage,
+      componentProps: this.getComponentProps()
+    });
+    return await modal.present();
+  }
+
+  async showOneR() {
+    const modal = await this.modalController.create({
+      component: OneRPage,
+      componentProps: this.getComponentProps()
+    });
+    return await modal.present();
+
+  }
+
+  async showNaiveBayes() {
+    const modal = await this.modalController.create({
+      component: NaiveBayesPage,
+      componentProps: this.getComponentProps()
+    });
+    return await modal.present();
+
+  }
+
+  changeRangeValidationMethod(method, value) {
+    if (method === 'holdOut') {
+      this.holdOutValue = value.detail.value;
+    } else {
+      this.kFoldCrossValidationValue = value.detail.value;
+    }
+  }
+
+
   async presentToast(message) {
     const toast = await this.toastController.create({
       message,
@@ -85,7 +143,7 @@ export class AnalisisPage implements OnInit {
     toast.present();
   }
 
-  muestraLog(message) {
-    console.log(message);
+  changeValidationMethod(method) {
+    this.selectedValidationMethod = method;
   }
 }

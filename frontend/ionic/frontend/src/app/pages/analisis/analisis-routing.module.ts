@@ -7,6 +7,18 @@ const routes: Routes = [
   {
     path: '',
     component: AnalisisPage
+  },
+  {
+    path: 'zero-r',
+    loadChildren: () => import('./zero-r/zero-r.module').then( m => m.ZeroRPageModule)
+  },
+  {
+    path: 'one-r',
+    loadChildren: () => import('./one-r/one-r.module').then( m => m.OneRPageModule)
+  },
+  {
+    path: 'naive-bayes',
+    loadChildren: () => import('./naive-bayes/naive-bayes.module').then( m => m.NaiveBayesPageModule)
   }
 ];
 

@@ -7,14 +7,22 @@ import { IonicModule } from '@ionic/angular';
 import { AnalisisPageRoutingModule } from './analisis-routing.module';
 
 import { AnalisisPage } from './analisis.page';
+import { OneRPage } from './one-r/one-r.page';
+import { ZeroRPage } from './zero-r/zero-r.page';
+import { NaiveBayesPage } from './naive-bayes/naive-bayes.page';
 
 @NgModule({
+  declarations: [AnalisisPage, OneRPage, ZeroRPage, NaiveBayesPage],
+  entryComponents: [
+    ZeroRPage,
+    OneRPage,
+    NaiveBayesPage
+  ],
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
     AnalisisPageRoutingModule
-  ],
-  declarations: [AnalisisPage]
+  ]
 })
 export class AnalisisPageModule {}

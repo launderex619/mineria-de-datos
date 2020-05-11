@@ -22,22 +22,58 @@
       <ion-col>
         <ion-card class="ion-padding ion-text-center">
           <ion-card-title>
+            <ion-button>Llenar faltantes</ion-button>
+          </ion-card-title>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-card class="ion-padding ion-text-center">
+          <ion-card-title>
             Metodologías de validación.
           </ion-card-title>
           <ion-card-content>
             <ion-list>
-              <ion-radio-group value="hold-out">
+              <ion-radio-group value="holdOut">
                 <ion-list-header>
                   <ion-label>Selecciona la metodologia</ion-label>
                 </ion-list-header>
-                <ion-item (click)="muestraLog('hold-out')">
-                  <ion-label>Hold-out</ion-label>
-                  <ion-radio slot="start" value="hold-out"></ion-radio>
-                </ion-item>
-                <ion-item (click)="muestraLog('k-fold-cross-validation')">
-                  <ion-label>K-Fold cross-validation</ion-label>
-                  <ion-radio slot="start" value="k-fold-cross-validation"></ion-radio>
-                </ion-item>
+                <ion-grid>
+                  <ion-row>
+                    <ion-col>
+                      <ion-item (click)="changeValidationMethod('holdOut')">
+                        <ion-label>Hold-out</ion-label>
+                        <ion-radio slot="start" value="holdOut"></ion-radio>
+                      </ion-item>
+                    </ion-col>
+                    <ion-col>
+                      <ion-item>
+                        <ion-range (ionChange)="changeRangeValidationMethod('holdOut', $event)" min="0" max="100" step="1" pin color="secondary">
+                          <ion-label slot="start">0</ion-label>
+                          <ion-label slot="end">100</ion-label>
+                        </ion-range>
+                      </ion-item>
+                    </ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col>
+                      <ion-item (click)="changeValidationMethod('kFoldCrossValidation')">
+                        <ion-label>K-Fold cross-validation</ion-label>
+                        <ion-radio slot="start" value="kFoldCrossValidation"></ion-radio>
+                      </ion-item>
+                    </ion-col>
+                    <ion-col>
+                      <ion-item>
+                        <ion-range (ionChange)="changeRangeValidationMethod('kFoldCrossValidation', $event)" min="0" max="10" step="1" pin snaps color="secondary">
+                          <ion-label slot="start">0</ion-label>
+                          <ion-label slot="end">10</ion-label>
+                        </ion-range>
+                      </ion-item>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+
               </ion-radio-group>
             </ion-list>
           </ion-card-content>
@@ -46,11 +82,11 @@
     </ion-row>
     <ion-row>
       <ion-col>
-        <ion-card class="ion-padding ion-text-center" (click)="showProperties()">
+        <ion-card class="ion-padding ion-text-center" (click)="showZeroR()">
           <ion-card-title>
             Zero-R
           </ion-card-title>
-          <ion-card-content >
+          <ion-card-content>
             <ion-avatar>
               <img src="./../../../assets/settings.png">
             </ion-avatar>
@@ -58,11 +94,11 @@
         </ion-card>
       </ion-col>
       <ion-col>
-        <ion-card class="ion-padding ion-text-center" (click)="createProperties()">
-          <ion-card-title >
+        <ion-card class="ion-padding ion-text-center" (click)="showOneR()">
+          <ion-card-title>
             One-R
           </ion-card-title>
-          <ion-card-content >
+          <ion-card-content>
             <ion-avatar>
               <img src="./../../../assets/settings.png">
             </ion-avatar>
@@ -70,11 +106,11 @@
         </ion-card>
       </ion-col>
       <ion-col>
-        <ion-card class="ion-padding ion-text-center" (click)="createProperties()">
-          <ion-card-title >
+        <ion-card class="ion-padding ion-text-center" (click)="showNaiveBayes()">
+          <ion-card-title>
             Naive-Bayes
           </ion-card-title>
-          <ion-card-content >
+          <ion-card-content>
             <ion-avatar>
               <img src="./../../../assets/settings.png">
             </ion-avatar>
@@ -88,7 +124,7 @@
           <ion-card-title>
             K-Means
           </ion-card-title>
-          <ion-card-content >
+          <ion-card-content>
             <ion-avatar>
               <img src="./../../../assets/settings.png">
             </ion-avatar>
@@ -97,10 +133,10 @@
       </ion-col>
       <ion-col>
         <ion-card class="ion-padding ion-text-center" (click)="createProperties()">
-          <ion-card-title >
+          <ion-card-title>
             K-NN
           </ion-card-title>
-          <ion-card-content >
+          <ion-card-content>
             <ion-avatar>
               <img src="./../../../assets/settings.png">
             </ion-avatar>
