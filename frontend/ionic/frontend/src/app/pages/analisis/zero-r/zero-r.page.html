@@ -1,9 +1,42 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>zero-r</ion-title>
+    <ion-title>Zero-r</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  {{settings | json}}
+  <ion-card class="ion-padding ion-text-center">
+    <ion-card-title>
+      Target: <strong>{{settings.target}}</strong>
+    </ion-card-title>
+    <ion-card-content>
+      <ion-grid *ngIf="tableClasses">
+        <ion-row>
+          <ion-col *ngFor="let clase of tableClasses">
+            <ion-card [ngClass]="(clase === mayorClass) ? 'green' : none">
+              <ion-card-header>
+                <ion-card-title>
+                  {{clase}}
+                </ion-card-title>
+                <ion-card-subtitle>
+                  {{table[clase]}}/{{settings.dataset.length}}
+                </ion-card-subtitle>
+                <ion-card-content>
+                  {{table[clase]/settings.dataset.length | number : '1.2-4'}}
+                </ion-card-content>
+              </ion-card-header>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-button color="secondary" (click)="closeModal()">
+              Cerrar
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+  <!-- {{settings | json}} -->
 </ion-content>
