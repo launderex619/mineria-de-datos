@@ -41,6 +41,8 @@ export class NaiveBayesPage implements OnInit {
     this.array = array;
     if (this.settings.validationMethod === "kFoldCrossValidation") {
       this.cross = this.cross_validation(this.settings.validationMethodValue);
+    } else if (this.settings.validationMethod === "holdOut") {
+      this.cross = this.hold_out(this.settings.validationMethodValue);
     }
   }
 
@@ -78,9 +80,38 @@ export class NaiveBayesPage implements OnInit {
     return resultado;
   }
 
+  hold_out(value) {
+    let array = JSON.parse(JSON.stringify(this.array));
+    let porsentaje = value / 100;
+    let iteracion = Math.round(this.array.length * porsentaje);
+    let resultado = {};
+    let promedio = 0;
+    for (let i = 0; i < 10; i++) {
+      let modelo = [];
+
+      for (let j = 0; j < iteracion; j++) {
+        modelo.push(array[Math.floor((Math.random() * array.length) + 0)]);
+        array.splice(Math.floor((Math.random() * array.length) + 0), 1)
+      }
+
+      let confusion = this.llenarMatriz(modelo, array);
+      resultado["M" + i] = this.exactitud(confusion);
+
+      for (let k = 0; k < modelo.length; k++) {
+        array.push(modelo[k]);
+      }
+    }
+    for (let i = 0; i < 10; i++) {
+      promedio += resultado["M" + i]["Exactitud"];
+    }
+    resultado["Promedio"] = promedio / 10;
+    console.log(resultado);
+    return resultado;
+  }
+
   llenarMatriz(array, modelo) {
     let confusion = {};
-    let bayes = new Bayes(array, this.clase);
+    let bayes = new Bayes(this.array, this.clase);
     let clase = bayes.dameUnicosAtributos(this.clase);
     clase.forEach(element => {
       confusion[element] = {};
@@ -324,19 +355,4 @@ class Bayes {
         });
         return resultado;
     }
-}
-
-class Evaluacion {
-  array = null;
-  clase = null;
-  constructor(array, clase) {
-    this.array = array;
-    this.clase = clase;
-  }
-
-  
-
-  hold_out() {
-
-  }
 }
