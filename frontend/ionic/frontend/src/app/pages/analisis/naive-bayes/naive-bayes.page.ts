@@ -91,7 +91,7 @@ export class NaiveBayesPage implements OnInit {
 
       for (let j = 0; j < iteracion; j++) {
         modelo.push(array[Math.floor((Math.random() * array.length) + 0)]);
-        array.splice(Math.floor((Math.random() * array.length) + 0), 1)
+        array.splice(Math.floor((Math.random() * array.length) + 0), 1);
       }
 
       let confusion = this.llenarMatriz(modelo, array);
@@ -119,10 +119,17 @@ export class NaiveBayesPage implements OnInit {
         confusion[element][valor] = 0;
       });
     });
+    console.log(array);
     bayes = new Bayes(array, this.clase);
     modelo.forEach(element => {
+      /*console.log("objetivo");
+      console.log(element[this.clase]);
+      console.log("modelo");
+      console.log(bayes.dameMaximo(bayes.dameProbabilidad(element)));*/
       let objeto = bayes.dameMaximo(bayes.dameProbabilidad(element));
-      confusion[element[this.clase]][objeto]++;
+      if(objeto != "") {
+        confusion[element[this.clase]][objeto]++;
+      }
     });
     console.log(confusion);
     this.matriz.push(confusion);
@@ -173,6 +180,7 @@ class Bayes {
   tablasFrecuencia = null;
   tablasVerosimilitud = null;
   totalClase = null;
+
     constructor(array, clase) {
         this.array = array;
         this.clase = clase;
@@ -279,6 +287,9 @@ class Bayes {
             }
         });
         desviacion = Math.sqrt(desviacion / cont);
+        if(desviacion == 0){
+          desviacion = 1;
+        }
         numerico["desviacion"] = desviacion;
         return numerico;
     }
