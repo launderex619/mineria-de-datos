@@ -49,9 +49,9 @@
                     </ion-col>
                     <ion-col>
                       <ion-item>
-                        <ion-range (ionChange)="changeRangeValidationMethod('holdOut', $event)" min="0" max="100" step="1" pin color="secondary">
-                          <ion-label slot="start">0</ion-label>
-                          <ion-label slot="end">100</ion-label>
+                        <ion-range (ionChange)="changeRangeValidationMethod('holdOut', $event)" min="40" max="80" step="1" pin color="secondary">
+                          <ion-label slot="start">40</ion-label>
+                          <ion-label slot="end">80</ion-label>
                         </ion-range>
                       </ion-item>
                     </ion-col>
@@ -65,8 +65,8 @@
                     </ion-col>
                     <ion-col>
                       <ion-item>
-                        <ion-range (ionChange)="changeRangeValidationMethod('kFoldCrossValidation', $event)" min="0" max="10" step="1" pin snaps color="secondary">
-                          <ion-label slot="start">0</ion-label>
+                        <ion-range (ionChange)="changeRangeValidationMethod('kFoldCrossValidation', $event)" min="2" max="10" step="1" pin snaps color="secondary">
+                          <ion-label slot="start">2</ion-label>
                           <ion-label slot="end">10</ion-label>
                         </ion-range>
                       </ion-item>

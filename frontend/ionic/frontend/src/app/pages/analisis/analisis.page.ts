@@ -19,7 +19,7 @@ export class AnalisisPage implements OnInit {
     nombre_atributo: '',
     tipo_de_dato: ''
   };
-  kFoldCrossValidationValue = 0;
+  kFoldCrossValidationValue = 2;
   holdOutValue = 0;
   selectedValidationMethod = 'holdOut';
   constructor(private route: ActivatedRoute,

@@ -1,9 +1,50 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>naive-bayes</ion-title>
+    <ion-title>Zero-r</ion-title>
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
-  {{settings | json}}
+  <ion-card class="ion-padding">
+    <ion-card-title class="ion-text-center">
+      Target: <strong>{{settings.target}}</strong>
+    </ion-card-title>
+    <ion-card-title class="ion-text-center">
+      Resultado: <strong>{{cross.Promedio}}</strong>
+    </ion-card-title>
+    <ion-card-content>
+      <ion-grid>
+        <ion-title>Matriz de Confusión</ion-title>
+        <ion-row>
+          <ion-col *ngFor="let resultado of matriz">
+            <ion-card>
+              <ion-card-content>
+                <pre>
+                  {{resultado | json}}
+                </pre>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col *ngFor="let exactitud of sensibilidadyExactitud">
+            <ion-card>
+              <ion-card-content>
+                <pre>
+                  {{exactitud | json}}
+                </pre>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-button color="secondary" (click)="closeModal()">
+              Cerrar
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+  <!-- {{settings | json}} -->
 </ion-content>
