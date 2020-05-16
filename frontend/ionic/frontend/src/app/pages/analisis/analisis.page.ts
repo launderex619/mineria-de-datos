@@ -7,6 +7,8 @@ import { ZeroRPage } from './zero-r/zero-r.page';
 import { OneRPage } from './one-r/one-r.page';
 import { NaiveBayesPage } from './naive-bayes/naive-bayes.page';
 import { KnnPage } from './knn/knn.page';
+import { KmeansPage } from './kmeans/kmeans.page';
+import { CategoricoANumericoPage } from './categorico-a-numerico/categorico-a-numerico.page';
 
 @Component({
   selector: 'app-analisis',
@@ -20,6 +22,7 @@ export class AnalisisPage implements OnInit {
     nombre_atributo: '',
     tipo_de_dato: ''
   };
+  settings = {};
   kFoldCrossValidationValue = 2;
   holdOutValue = 40;
   selectedValidationMethod = 'holdOut';
@@ -44,6 +47,7 @@ export class AnalisisPage implements OnInit {
         this.properties = resp.archivo;
         console.log(this.properties);
         this.findTarget();
+        this.createSettings();
       }
     } catch (error) {
       console.error(error);
@@ -52,9 +56,22 @@ export class AnalisisPage implements OnInit {
 
   findTarget() {
     this.properties.atributos_archivo_creado.forEach(atrib => {
-      if(atrib.target) {
+      if (atrib.target) {
         this.target.nombre_atributo = atrib.nombre_atributo;
         this.target.tipo_de_dato = atrib.tipo_de_dato;
+      }
+    });
+  }
+
+  createSettings() {
+    this.properties.atributos_archivo_creado.forEach(atribb => {
+      const datatype = atribb.tipo_de_dato;
+      if (datatype === 'Numerico') {
+        this.settings[atribb.nombre_atributo] = datatype;
+      } else {
+        this.settings[atribb.nombre_atributo] =
+          prompt(`Por favor, ingresa que tipo de dato categorico es el atributo
+            ${atribb.nombre_atributo} con la expresion ${atribb.expresion_regular}`, 'Ordinal');
       }
     });
   }
@@ -96,9 +113,10 @@ export class AnalisisPage implements OnInit {
         validationMethod: this.selectedValidationMethod,
         validationMethodValue,
         dataset: this.dataset,
-        properties: this.properties
+        properties: this.properties,
+        settings: this.settings
       }
-    }
+    };
   }
 
   async showZeroR() {
@@ -135,6 +153,22 @@ export class AnalisisPage implements OnInit {
     return await modal.present();
   }
 
+  async showKmeans() {
+    const modal = await this.modalController.create({
+      component: KmeansPage,
+      componentProps: this.getComponentProps()
+    });
+    return await modal.present();
+  }
+
+  async transformCategoricToNumeric() {
+    const modal = await this.modalController.create({
+      component: CategoricoANumericoPage,
+      componentProps: this.getComponentProps()
+    });
+    return await modal.present();
+  }
+
   changeRangeValidationMethod(method, value) {
     if (method === 'holdOut') {
       this.holdOutValue = value.detail.value;
@@ -142,7 +176,6 @@ export class AnalisisPage implements OnInit {
       this.kFoldCrossValidationValue = value.detail.value;
     }
   }
-
 
   async presentToast(message) {
     const toast = await this.toastController.create({

@@ -26,6 +26,41 @@
           </ion-card-title>
         </ion-card>
       </ion-col>
+      <ion-col>
+        <ion-card class="ion-padding ion-text-center">
+          <ion-card-title>
+            <ion-button>Detectar y corregir outliers</ion-button>
+          </ion-card-title>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card class="ion-padding ion-text-center">
+          <ion-card-title>
+            <ion-button>Deteccion de errores tipograficos</ion-button>
+          </ion-card-title>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card class="ion-padding ion-text-center">
+          <ion-card-title>
+            <ion-button>Normalizar datos</ion-button>
+          </ion-card-title>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card class="ion-padding ion-text-center">
+          <ion-card-title>
+            <ion-button (click)="transformCategoricToNumeric()">Transformar Categoricos a numericos</ion-button>
+          </ion-card-title>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card class="ion-padding ion-text-center">
+          <ion-card-title>
+            <ion-button>Transformar numericos a categoricos</ion-button>
+          </ion-card-title>
+        </ion-card>
+      </ion-col>
     </ion-row>
     <ion-row>
       <ion-col>
@@ -120,7 +155,7 @@
     </ion-row>
     <ion-row>
       <ion-col>
-        <ion-card class="ion-padding ion-text-center" (click)="showProperties()">
+        <ion-card class="ion-padding ion-text-center" (click)="showKmeans()">
           <ion-card-title>
             K-Means
           </ion-card-title>

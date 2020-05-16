@@ -23,7 +23,15 @@ const routes: Routes = [
   {
     path: 'knn',
     loadChildren: () => import('./knn/knn.module').then( m => m.KnnPageModule)
+  },  {
+    path: 'kmeans',
+    loadChildren: () => import('./kmeans/kmeans.module').then( m => m.KmeansPageModule)
+  },
+  {
+    path: 'categorico-a-numerico',
+    loadChildren: () => import('./categorico-a-numerico/categorico-a-numerico.module').then( m => m.CategoricoANumericoPageModule)
   }
+
 ];
 
 @NgModule({
