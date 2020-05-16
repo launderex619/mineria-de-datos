@@ -16,24 +16,50 @@ export class KmeansPage implements OnInit {
   settings: any;
   constructor(private navParams: NavParams, private modalControler: ModalController) {
     // valor obtenido
-    this.settings = this.navParams.get('settings');
+    this.settings = JSON.parse(JSON.stringify(this.navParams.get('settings')));
     console.log(this.settings);
     this.iteraciones = +prompt(`Por favor, ingresa el numero de iteraciones que realizara el algoritmo`, '0');
     this.epocas = +prompt(`Por favor, ingresa el numero de corridas que realizara el algoritmo`, '0');
     this.centroides = +prompt(`Por favor, ingresa el numero de clusteres a clasificar`, '0');
-    this.configuracion = this.settings.settings;
-    this.datos = this.settings.dataset;
+    this.configuracion = JSON.parse(JSON.stringify(this.settings.settings));
+    this.datos = JSON.parse(JSON.stringify(this.settings.dataset));
     this.clusters = [];
   }
 
   ngOnInit() {
+    const entrenamiento = this.entrenar();
+    this.dibujarTabla('kmeans', entrenamiento);
+    document.getElementById('kmeansLargo').innerHTML = JSON.stringify(entrenamiento, null, 4);
   }
 
   ionViewDidEnter() {
-    this.entrenar();
+  }
+
+  dibujarTabla(id, info) {
+    const tabla = document.getElementById(id);
+    let tablaString = `
+      <table class="overflow">
+      <thead>
+          <tr>
+      `;
+
+    tablaString += `<th scope="col" class="ion-padding">Cluster</th>`;
+    tablaString += `<th scope="col" class="ion-padding">Centro</th>`;
+    tablaString += `<th scope="col" class="ion-padding">Silhouette</th>`;
+    tablaString += '</tr></thead><tbody>';
+    info.clusters.forEach((elemento, it) => {
+      tablaString += `<tr>`;
+      tablaString += `<td><pre>Cluster ${it}</pre></td>`;
+      tablaString += `<td><pre>${JSON.stringify(elemento.centro, null, 4)}</pre></td>`;
+      tablaString += `<td><pre>${elemento.errorMedio}</pre></td>`;
+      tablaString += `</tr>`;
+    });
+    tablaString += '</tbody></table>';
+    tabla.innerHTML = tablaString;
   }
 
   entrenar() {
+    //debugger;
     let mejorEpoca = null;
     // repetir el algoritmo 'epocas' veces
     for (let i = 0; i < this.epocas; i++) {
@@ -109,8 +135,7 @@ export class KmeansPage implements OnInit {
       }
     }
     this.clusters = mejorEpoca;
-    console.log(mejorEpoca);
-    document.getElementById('kmeans').innerHTML = JSON.stringify(mejorEpoca, null, 4);
+    return mejorEpoca;
   }
 
   inicializarClusters() {
@@ -125,7 +150,6 @@ export class KmeansPage implements OnInit {
     randomNumbers.forEach(randomValue => {
       clusters.push({ centro: JSON.parse(JSON.stringify(this.datos[randomValue])), elementos: [], silhouettes: [], errorMedio: 0 });
     });
-    console.log(randomNumbers, clusters);
     return clusters;
   }
 
@@ -134,6 +158,12 @@ export class KmeansPage implements OnInit {
     const llaves = Object.keys(dato);
     let sum = 0;
     llaves.forEach(llave => {
+      if (!centro[llave]) {
+        centro[llave] = 0;
+      }
+      if (!dato[llave]) {
+        dato[llave] = 0;
+      }
       sum += Math.pow(centro[llave] - dato[llave], 2);
     });
     return Math.sqrt(sum);
