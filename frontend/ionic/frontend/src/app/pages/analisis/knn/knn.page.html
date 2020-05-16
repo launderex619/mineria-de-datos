@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>K-NN</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card class="ion-padding">
+    <ion-card-title class="ion-text-center">
+      Target: <strong>{{settings.target}}</strong>
+    </ion-card-title>
+      <ion-title *ngIf="tipo == 'Numerico'" class="ion-padding">Error Cuadratico Medio</ion-title>
+      <ion-card-title class="ion-text-center" *ngIf="tipo == 'Numerico'">
+        Resultado: {{cross.Promedio/100}}
+      </ion-card-title>
+      <ion-card-title class="ion-text-center" *ngIf="tipo == 'Categorico'">
+        Resultado: {{cross.Promedio}}
+      </ion-card-title>
+      <ion-grid>
+        <ion-card-content *ngIf="tipo == 'Categorico'">
+          <ion-title>Matriz de Confusión</ion-title>
+          <ion-row>
+            <ion-col *ngFor="let resultado of matriz">
+              <ion-card>
+                <ion-card-content>
+                  <pre>
+                    {{resultado | json}}
+                  </pre>
+                </ion-card-content>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col *ngFor="let exactitud of sensibilidadyExactitud">
+              <ion-card>
+                <ion-card-content>
+                  <pre>
+                    {{exactitud | json}}
+                  </pre>
+                </ion-card-content>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+        </ion-card-content>
+        <ion-row class="ion-text-center">
+          <ion-col>
+            <ion-button color="secondary" (click)="closeModal()">
+              Cerrar
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+  </ion-card>
+  <!-- {{settings | json}} -->
+</ion-content>

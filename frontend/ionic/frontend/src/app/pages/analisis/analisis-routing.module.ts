@@ -19,6 +19,10 @@ const routes: Routes = [
   {
     path: 'naive-bayes',
     loadChildren: () => import('./naive-bayes/naive-bayes.module').then( m => m.NaiveBayesPageModule)
+  },
+  {
+    path: 'knn',
+    loadChildren: () => import('./knn/knn.module').then( m => m.KnnPageModule)
   }
 ];
 

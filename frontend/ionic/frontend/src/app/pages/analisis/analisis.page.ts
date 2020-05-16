@@ -6,6 +6,7 @@ import { ToastController, ModalController } from '@ionic/angular';
 import { ZeroRPage } from './zero-r/zero-r.page';
 import { OneRPage } from './one-r/one-r.page';
 import { NaiveBayesPage } from './naive-bayes/naive-bayes.page';
+import { KnnPage } from './knn/knn.page';
 
 @Component({
   selector: 'app-analisis',
@@ -124,6 +125,14 @@ export class AnalisisPage implements OnInit {
     });
     return await modal.present();
 
+  }
+
+  async showKnn() {
+    const modal = await this.modalController.create({
+      component: KnnPage,
+      componentProps: this.getComponentProps()
+    });
+    return await modal.present();
   }
 
   changeRangeValidationMethod(method, value) {
