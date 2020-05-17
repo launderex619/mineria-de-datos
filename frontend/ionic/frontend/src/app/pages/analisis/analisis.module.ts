@@ -13,16 +13,27 @@ import { NaiveBayesPage } from './naive-bayes/naive-bayes.page';
 import { KnnPage } from './knn/knn.page';
 import { KmeansPage } from './kmeans/kmeans.page';
 import { CategoricoANumericoPage } from './categorico-a-numerico/categorico-a-numerico.page';
+import { NormalizacionPage } from './normalizacion/normalizacion.page';
 
 @NgModule({
-  declarations: [AnalisisPage, OneRPage, ZeroRPage, NaiveBayesPage, KnnPage, KmeansPage, CategoricoANumericoPage],
+  declarations: [
+    AnalisisPage,
+    OneRPage,
+    ZeroRPage,
+    NaiveBayesPage,
+    KnnPage,
+    KmeansPage,
+    CategoricoANumericoPage,
+    NormalizacionPage
+  ],
   entryComponents: [
     ZeroRPage,
     OneRPage,
     NaiveBayesPage,
     KnnPage,
     KmeansPage,
-    CategoricoANumericoPage
+    CategoricoANumericoPage,
+    NormalizacionPage
   ],
   imports: [
     CommonModule,

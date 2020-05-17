@@ -9,6 +9,7 @@ import { NaiveBayesPage } from './naive-bayes/naive-bayes.page';
 import { KnnPage } from './knn/knn.page';
 import { KmeansPage } from './kmeans/kmeans.page';
 import { CategoricoANumericoPage } from './categorico-a-numerico/categorico-a-numerico.page';
+import { NormalizacionPage } from './normalizacion/normalizacion.page';
 
 @Component({
   selector: 'app-analisis',
@@ -84,10 +85,6 @@ export class AnalisisPage implements OnInit {
         // @ts-ignore
         this.dataset = resp.datos;
         const datasetCopy = [];
-        // tslint:disable-next-line: no-shadowed-variable
-        this.dataset.forEach((element, index) => {
-          element._id = index;
-        });
         if (this.dataset.length > 500) {
           this.presentToast(
             'Por temas de performance, solo se mostraran los primeros 500 elementos, numero de elementos: ' + this.dataset.length
@@ -164,6 +161,14 @@ export class AnalisisPage implements OnInit {
   async transformCategoricToNumeric() {
     const modal = await this.modalController.create({
       component: CategoricoANumericoPage,
+      componentProps: this.getComponentProps()
+    });
+    return await modal.present();
+  }
+
+  async normalize() {
+    const modal = await this.modalController.create({
+      component: NormalizacionPage,
       componentProps: this.getComponentProps()
     });
     return await modal.present();
