@@ -16,6 +16,9 @@ export class LlenarFaltantesPage implements OnInit {
   }
 
   ngOnInit() {
+
+    this.dibujarTabla("datosAntes");
+
     delete this.settings.settings['sl_no'];
     let tipo = Object.keys(this.settings.settings);
     this.array = this.settings.dataset;
@@ -27,6 +30,8 @@ export class LlenarFaltantesPage implements OnInit {
 
     this.valores = this.llenarDatos();
     this.settings.dataset;
+
+    this.dibujarTabla("datosDespues");
 
   }
 
@@ -138,5 +143,28 @@ export class LlenarFaltantesPage implements OnInit {
       }
     });
     return llenado;
+  }
+
+  dibujarTabla(id) {
+    const tabla = document.getElementById(id);
+    let tablaString = `
+      <table class="overflow">
+      <thead>
+          <tr>
+      `;
+    Object.keys(this.settings.settings).forEach(llaveConfig => {
+      tablaString += `<th scope="col" class="ion-padding">${llaveConfig}</th>`;
+    });
+    tablaString += '</tr></thead><tbody>';
+    this.settings.dataset.forEach(elemento => {
+      const llaves = Object.keys(elemento);
+      tablaString += `<tr>`;
+      llaves.forEach(llave => {
+        tablaString += `<td>${elemento[llave]}</td>`;
+      });
+      tablaString += `</tr>`;
+    });
+    tablaString += '</tbody></table>';
+    tabla.innerHTML = tablaString;
   }
 }
