@@ -10,6 +10,7 @@ import { KnnPage } from './knn/knn.page';
 import { KmeansPage } from './kmeans/kmeans.page';
 import { CategoricoANumericoPage } from './categorico-a-numerico/categorico-a-numerico.page';
 import { NormalizacionPage } from './normalizacion/normalizacion.page';
+import { NumericoACategoricoPage } from './numerico-a-categorico/numerico-a-categorico.page';
 
 @Component({
   selector: 'app-analisis',
@@ -166,6 +167,13 @@ export class AnalisisPage implements OnInit {
     return await modal.present();
   }
 
+  async transformNumericToCategoric() {
+    const modal = await this.modalController.create({
+      component: NumericoACategoricoPage,
+      componentProps: this.getComponentProps()
+    });
+    return await modal.present();
+  }
   async normalize() {
     const modal = await this.modalController.create({
       component: NormalizacionPage,

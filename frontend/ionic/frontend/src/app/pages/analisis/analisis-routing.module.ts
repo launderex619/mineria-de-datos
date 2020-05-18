@@ -34,6 +34,10 @@ const routes: Routes = [
   {
     path: 'normalizacion',
     loadChildren: () => import('./normalizacion/normalizacion.module').then( m => m.NormalizacionPageModule)
+  },
+  {
+    path: 'numerico-a-categorico',
+    loadChildren: () => import('./numerico-a-categorico/numerico-a-categorico.module').then( m => m.NumericoACategoricoPageModule)
   }
 
 ];
