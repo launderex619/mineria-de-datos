@@ -104,6 +104,7 @@ export class OneRPage implements OnInit {
       confusion[element[this.clase]][objeto[atributo][element[atributo]]["elegido"]]++;
     });
     console.log(confusion);
+    this.matriz.push(confusion);
     return confusion;
   }
 
@@ -130,7 +131,7 @@ export class OneRPage implements OnInit {
     });
     exactitud /= sumaexact;
     resultado["Exactitud"] = exactitud;
-    //console.log(resultado);
+    this.sensibilidadyExactitud.push(resultado);
     return resultado;
   }
 
