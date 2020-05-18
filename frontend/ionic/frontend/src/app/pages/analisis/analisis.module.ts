@@ -14,6 +14,7 @@ import { KnnPage } from './knn/knn.page';
 import { KmeansPage } from './kmeans/kmeans.page';
 import { CategoricoANumericoPage } from './categorico-a-numerico/categorico-a-numerico.page';
 import { NormalizacionPage } from './normalizacion/normalizacion.page';
+import { NumericoACategoricoPage } from './numerico-a-categorico/numerico-a-categorico.page';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { NormalizacionPage } from './normalizacion/normalizacion.page';
     KnnPage,
     KmeansPage,
     CategoricoANumericoPage,
-    NormalizacionPage
+    NormalizacionPage,
+    NumericoACategoricoPage
   ],
   entryComponents: [
     ZeroRPage,
@@ -33,7 +35,8 @@ import { NormalizacionPage } from './normalizacion/normalizacion.page';
     KnnPage,
     KmeansPage,
     CategoricoANumericoPage,
-    NormalizacionPage
+    NormalizacionPage,
+    NumericoACategoricoPage
   ],
   imports: [
     CommonModule,

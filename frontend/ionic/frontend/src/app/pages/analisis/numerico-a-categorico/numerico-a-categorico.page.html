@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>numerico-a-categorico</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row *ngIf="canShowButtons">
+      <ion-col>
+        <ion-button (click)="equalWidth()">Equal width</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button (click)="equalHeight()">Equal height</ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-card>
+          <div id="datosAntes" class="overflow"></div>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card>
+          <div id="datosDespues" class="overflow"></div>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
