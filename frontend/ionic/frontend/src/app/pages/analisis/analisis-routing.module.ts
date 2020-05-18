@@ -34,6 +34,15 @@ const routes: Routes = [
   {
     path: 'normalizacion',
     loadChildren: () => import('./normalizacion/normalizacion.module').then( m => m.NormalizacionPageModule)
+  },
+  {
+<<<<<<< HEAD
+    path: 'llenar-faltantes',
+    loadChildren: () => import('./llenar-faltantes/llenar-faltantes.module').then( m => m.LlenarFaltantesPageModule)
+=======
+    path: 'numerico-a-categorico',
+    loadChildren: () => import('./numerico-a-categorico/numerico-a-categorico.module').then( m => m.NumericoACategoricoPageModule)
+>>>>>>> 62e98ec70cb0b95e1cc2e332df95a19d01c4fcf8
   }
 
 ];
