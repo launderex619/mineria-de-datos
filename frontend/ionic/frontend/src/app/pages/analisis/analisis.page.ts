@@ -10,11 +10,8 @@ import { KnnPage } from './knn/knn.page';
 import { KmeansPage } from './kmeans/kmeans.page';
 import { CategoricoANumericoPage } from './categorico-a-numerico/categorico-a-numerico.page';
 import { NormalizacionPage } from './normalizacion/normalizacion.page';
-<<<<<<< HEAD
 import { LlenarFaltantesPage } from './llenar-faltantes/llenar-faltantes.page';
-=======
 import { NumericoACategoricoPage } from './numerico-a-categorico/numerico-a-categorico.page';
->>>>>>> 62e98ec70cb0b95e1cc2e332df95a19d01c4fcf8
 
 @Component({
   selector: 'app-analisis',
